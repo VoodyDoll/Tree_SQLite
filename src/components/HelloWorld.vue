@@ -1,55 +1,32 @@
 <template>
-  
-    <div class="container">
-      <div class="row">
-        <div class="col-md">
-          <input type="text" placeholder="Name">
-          <input type="text" placeholder="Age"><br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md">
+        <input type="text" placeholder="Name">
+        <input type="text" placeholder="Age"><br>
+      </div>
+    </div>
+    <button @click='boomer'>OK</button>
+    <button @click="rezz=null">del</button>   
+  </div>
+
+  <div class="container">
+    <div class="d-flex flex-wrap">
+      <div class="miss" v-for="jo in rezz">
+
+       <div class="card" style="width: 18rem;">
+        <img width="300" height="200" :src="require(`../static/img/${jo.img}`)" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{jo.name}}</h5>
+          <p class="card-text">{{jo.age}}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
-      <button @click='boomer'>OK</button>
-      <button @click="rezz=null">del</button>   
-</div>
-    <div class="go">
-      <div class="miss" v-for="jo in rezz">
-        <!-- <div class="container"> -->
-          <!-- <div class="row"> -->
-
-            <!-- <div class="col" id="vo">  -->
-             <div class="card" style="width: 18rem;">
-              <img :src="require(`../static/img/${jo.img}`)" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">{{jo.name}}</h5>
-                <p class="card-text">{{jo.age}}</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-
-          <!-- </div> -->
-        <!-- </div> -->
-      <!-- </div> -->
-    <!-- </div>   -->
-  </div>  
-</div>  
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-sm-4">
-      <h3>Column 1</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-    </div>
-    <div class="col-sm-4">
-      <h3>Column 2</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-    </div>
-    <div class="col-sm-4">
-      <h3>Column 3</h3>        
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
     </div>
   </div>
 </div>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-6">
