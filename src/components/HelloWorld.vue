@@ -59,7 +59,7 @@
         you:'Dependances',
         titleproduct:[],         
         plus:0,        
-        rezz:null,
+        rezz:[],
         datat:null,
       }
     },
@@ -73,7 +73,7 @@
         })
         .then(res=>res.json())                 
         .then(data=>this.rezz=data)       
-
+          
       }
     }
 
