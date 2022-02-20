@@ -13,23 +13,26 @@
 
   <div class="container">
     <div class="d-flex flex-wrap">
-      <div class="miss" v-for="jo in rezz">
+      <div class="miss" v-for="jo in rezz" :key='jo'>
 
-       <div class="card" style="width: 18rem;">
+       <div class="card"  style="width: 18rem;">
         <img width="300" height="200" :src="require(`../static/img/${jo.img}`)" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{jo.name}}</h5>
           <p class="card-text">{{jo.age}}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <!-- <div > -->
+            <button class='btn btn-primary' @click='chenge_class'>{{bag}}</button>
+          <!-- <a class='btn btn-primary' ><b>{{bag}}</b></a> -->
+          <!-- </div> -->
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6">
+<!-- <div class="container"> -->
+  <!-- <div class="row"> -->
+    <!-- <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Special title treatment</h5>
@@ -37,18 +40,18 @@
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
-    </div>
-    <div class="col-sm-6">
+    </div> -->
+  <!--   <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Special title treatment</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="#" class="btn btn-primary">В карзинку+</a>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+    </div> -->
+  <!-- </div> -->
+<!-- </div> -->
 <!-- </div> -->
 </template>
 
@@ -60,21 +63,38 @@
         titleproduct:[],         
         plus:0,        
         rezz:[],
-        datat:null,
+        datat:null,        
+        bag:'В корзинку+',
+        // кнопка в карзину 
+        case:null
       }
     },
     methods:{
-      boomer(){      
-        fetch('http://localhost:3000',{ 
+      
+      chenge_class(event){
+        this.case=true;
+        console.log(this.case)
+        event.target.className='btn btn-primary'      
+        event.target.className='';
+        event.target.className='btn btn-danger';
+        event.target.style= 'width:250px';
+        event.target.innerHTML='корзинка';
+        event.target.innerHTML.style='font-size:18px';        
+        
+        }
+         
+
+      
+    },
+    mounted(){
+       fetch('http://localhost:3000',{ 
           method: 'GET',
           headers: {
             'Content-Type': 'application/json;charset=utf-8'
           },      
         })
         .then(res=>res.json())                 
-        .then(data=>this.rezz=data)       
-          
-      }
+        .then(data=>this.rezz=data) 
     }
 
   }
