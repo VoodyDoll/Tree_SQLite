@@ -1,19 +1,40 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
- <Header></Header>
-  <HelloWorld></HelloWorld>  
+  <!-- передача из радителя в дочь -->
+ <Header :case='case'></Header>
+  <Main :caseLoad='caseLoad'></Main>  
+  <ModalWindow></ModalWindow>  
+  <Footer></Footer>  
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Main from './components/Main.vue'
 import Header from './components/Header'
+import ModalWindow from './components/ModalWindow'
+import Footer from './components/Footer'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    Header
-  }
+    Main,
+    Header,
+    ModalWindow,
+    Footer
+  },
+  data(){
+    return{
+      // передача из родителя в дочь
+      case:false,
+    }
+
+  },
+  methods:{ 
+    caseLoad(data){
+      this.case=data
+      // console.log('case')
+
+    }
+   }
 }
 </script>
 
