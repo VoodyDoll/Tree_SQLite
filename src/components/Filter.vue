@@ -2,12 +2,10 @@
 	<div class="container">
     <div class="row">
       <div class="col-md">
-        <input type="text" placeholder="Name">
-        <input type="text" placeholder="Age"><br>
+       <my-select v-model='selectedSort' :options='sortOptions'></my-select>
       </div>
     </div>
-    <button @click='boomer'>OK</button>
-    <button @click="rezz=null">del</button>   
+    
   </div>
 </template>
 
@@ -18,7 +16,22 @@ export default {
 
   data () {
     return {
+      selectedSort:'',
+      sortOptions:[
+        {value:'age',name:'От дешовых к дорогим'},
+        {value:'age',name:'От дорогих к дешовым'}
+      ],
 
+    }
+  },
+  methods:{
+
+  },
+  watch:{
+    selectedSort(newValue){
+      this.$emit('revers',newValue)
+     // console.log(newValue)
+     
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
 
-  <Filter></Filter>
+  <Filter @revers='rport' v-model='selectedSort'></Filter>
   <Cards :cardrezz='rezz' :nameButton='bag'></Cards>
   <div class="container">    
 
@@ -48,54 +48,42 @@
 </template>
 
 <script>
-  import Filter from '@/components/Filter.vue'
-  import Cards from '@/components/Cards.vue'
-  export default {
-    components:{
-      Filter,
-      Cards
-    },
-    props:['caseLoad'],
-    data(){
-      return{
-        you:'Dependances',
-        titleproduct:[],         
-        plus:0,        
-        rezz:[],
-        datat:null,        
-        bag:'В корзинку+',
+import Filter from '@/components/Filter.vue'
+import Cards from '@/components/Cards.vue'
+export default {
+  components:{
+    Filter,
+    Cards
+  },
+  props:['caseLoad'],
+  data(){
+    return{
+      you:'Dependances',
+      titleproduct:[],         
+      plus:0,        
+      rezz:[],
+      datat:null,        
+      bag:'В корзинку+',
         // кнопка в карзину 
         case:false,
         modalWindow:false,
         bagWindow:false,
-        // sel:null
+        selectedSort:'',
+        toot:''
+        
       }
     },
-    methods:{ 
-         // изменяет класс кнопки при клике по ней 
-      chenge_class(){
-        if (event.target.className=='btn btn-danger') {
-          this.bagWindow=true
-        }
-          // console.log('555')
-        // }else{
-        //   console.log(event.target.className)
-        //  this.modalWindow=true    
-        this.caseLoad({case:this.case})     
-        event.target.className='btn btn-primary'      
-        event.target.className='';
-        event.target.className='btn btn-danger';
-        event.target.style= 'width:250px';
-        event.target.innerHTML='в корзинке';
-        event.target.innerHTML.style='font-size:18px';
+    methods:{     
+      
+      rport(toot){
+        // console.log(toot)
+        return this.rezz.sort((post1,post2)=>{
+          return post1[toot]-post2[toot]
 
-        localStorage.setItem('ko','joo')
-
-        // }
+        })
       }
-      // selBody(jo){
-      //   localStorage.setItem('ko',jo)
-      // }      
+
+      
     },
     mounted(){
      fetch('http://localhost:3000',{ 
@@ -106,45 +94,55 @@
     })
      .then(res=>res.json())                 
      .then(data=>this.rezz=data) 
-   }
+   },
+   computed:{
+    // sortedPost(){
+    //   return [...this.rezz].sort((post1,post2)=>{
+    //     return post1[this.selectedSort]?.localeCompare(post2[this.selectedSort])
+    //   })
+    // },
+    // sortedElements(){
+    //   return this.sortedPost.filter(post=>post.img.toLowerCase().includes(this.searchQuery.toLowerCase()))
+    // }
+  },
 
- }
+}
 
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  h3 {
-    margin: 40px 0 0;
-  }
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-  a {
-    color: #42b983;
-  }
-  .miss {
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+.miss {
 
-    margin-right: 10px;
-  }
-  #vo{
-    border: 1px;
-  }
-  .go{
-    width: 100%;
-    display: flex;
-    margin: 0; /* Обнуляем значение отступов */
-    padding: 4px; /* Значение полей */
-    justify-content: center;
-  }
-  .col{
-    border: 1px solid; 
-  }
+  margin-right: 10px;
+}
+#vo{
+  border: 1px;
+}
+.go{
+  width: 100%;
+  display: flex;
+  margin: 0; /* Обнуляем значение отступов */
+  padding: 4px; /* Значение полей */
+  justify-content: center;
+}
+.col{
+  border: 1px solid; 
+}
 .col-2,.col-4{
   border: solid 1px;
 }
