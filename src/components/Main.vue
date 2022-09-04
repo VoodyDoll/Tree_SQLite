@@ -1,7 +1,7 @@
 <template>
-
+{{searchr}}
   <Filter @revers='rport' v-model='selectedSort'></Filter>
-  <Cards :cardrezz='rezz' :nameButton='bag'></Cards>
+  <Cards  :cardrezz='rezz' :nameButton='bag'></Cards>
   <div class="container">    
 
     <!-- КОРЗИНКА МАГАЗИНА -->
@@ -55,7 +55,14 @@ export default {
     Filter,
     Cards
   },
-  props:['caseLoad'],
+  props:{
+    
+    searchr:{
+      type:String
+    }
+
+
+  },
   data(){
     return{
       you:'Dependances',
@@ -74,15 +81,21 @@ export default {
       }
     },
     methods:{     
-      
+      // Поле поиска
+
+      // сортировка по стоимости
       rport(toot){
         // console.log(toot)
-        return this.rezz.sort((post1,post2)=>{
-          return post1[toot]-post2[toot]
+        if (toot=='costlow') {
+          return this.rezz.sort((post1,post2)=>{
+          return post1['age']-post2['age']})
+        }
+        else if (toot=='costbig') {
+          return this.rezz.sort((post1,post2)=>{
+          return post2['age']-post1['age']})
+        }        
 
-        })
-      }
-
+        }
       
     },
     mounted(){
@@ -95,6 +108,13 @@ export default {
      .then(res=>res.json())                 
      .then(data=>this.rezz=data) 
    },
+   watch:{
+    searchr(pil){
+      console.log(pil)
+    }
+   },
+
+
    computed:{
     // sortedPost(){
     //   return [...this.rezz].sort((post1,post2)=>{

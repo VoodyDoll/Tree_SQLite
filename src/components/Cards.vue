@@ -30,15 +30,22 @@ export default {
   	},
   	nameButton:{
   		type:String
-  	}
+  	},
+    serch:{
+      type:String
+    }
   },
 
   data () {
     return {
+      serch:''
 
     }
   },
    methods:{ 
+
+
+
          // изменяет класс кнопки при клике по ней 
       chenge_class(){
         if (event.target.className=='btn btn-danger') {

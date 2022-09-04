@@ -53,8 +53,9 @@
         </li>
       </ul>
       <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <!-- поле поиска -->
+        <input v-model='searchvalue' class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button @click='searchr'  class="btn btn-outline-success" >Search</button>
       </form>
     </div>
   </div>
@@ -68,7 +69,14 @@ export default {
 
   data () {
     return {
-
+      searchvalue:''
+    }
+  },
+  methods:{
+    searchr(){
+      this.$emit('setcher',this.searchvalue)
+      // console.log(this.searchvalue)
+      this.searchvalue=''
     }
   }
 }

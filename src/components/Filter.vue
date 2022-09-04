@@ -18,8 +18,8 @@ export default {
     return {
       selectedSort:'',
       sortOptions:[
-        {value:'age',name:'От дешовых к дорогим'},
-        {value:'age',name:'От дорогих к дешовым'}
+        {value:'costlow',name:'От дешовых к дорогим'},
+        {value:'costbig',name:'От дорогих к дешовым'}
       ],
 
     }

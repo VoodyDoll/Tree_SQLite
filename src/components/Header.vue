@@ -1,7 +1,7 @@
 <template>
   <carusel></carusel>
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"> -->
-  <nav-bar></nav-bar>
+  <nav-bar @setcher='searchr'></nav-bar>
   <bag-window></bag-window>
 </template>
 
@@ -26,6 +26,11 @@
       }
     },
     methods:{
+      // передача из navbar
+      searchr(search){
+        // console.log(search)
+        this.$emit('searchr',search)
+      }
    
   }
   

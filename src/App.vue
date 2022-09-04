@@ -1,8 +1,8 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!-- передача из радителя в дочь -->
- <Header :case='case'></Header>
-  <Main :caseLoad='caseLoad'></Main>  
+ <Header @searchr='searchr' :case='case'></Header>
+  <Main :searchr='searchr' :caseLoad='caseLoad'></Main>  
   <ModalWindow></ModalWindow>  
   <Footer></Footer>  
 </template>
@@ -33,6 +33,9 @@ export default {
       this.case=data
       // console.log('case')
 
+    },
+    searchr(searchr){
+      this.$emit('searchr',this.searchr)
     }
    }
 }
