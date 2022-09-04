@@ -1,8 +1,8 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!-- передача из радителя в дочь -->
- <Header @searchr='searchr' :case='case'></Header>
-  <Main :searchr='searchr' :caseLoad='caseLoad'></Main>  
+ <Header @searc='searchh' :case='case'></Header>
+  <Main :searchr='search' :caseLoad='caseLoad'></Main>  
   <ModalWindow></ModalWindow>  
   <Footer></Footer>  
 </template>
@@ -25,6 +25,7 @@ export default {
     return{
       // передача из родителя в дочь
       case:false,
+      search:''
     }
 
   },
@@ -34,8 +35,12 @@ export default {
       // console.log('case')
 
     },
-    searchr(searchr){
-      this.$emit('searchr',this.searchr)
+    searchh(sear){
+      // console.log(sear)
+      // this.$emit('sear',search)
+      this.search=sear
+      // console.log(sear)
+
     }
    }
 }

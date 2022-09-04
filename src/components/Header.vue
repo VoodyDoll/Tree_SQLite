@@ -29,7 +29,7 @@
       // передача из navbar
       searchr(search){
         // console.log(search)
-        this.$emit('searchr',search)
+        this.$emit('searc',search)
       }
    
   }

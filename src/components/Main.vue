@@ -58,9 +58,8 @@ export default {
   props:{
     
     searchr:{
-      type:String
+      type:[String,Array]
     }
-
 
   },
   data(){
@@ -110,7 +109,9 @@ export default {
    },
    watch:{
     searchr(pil){
-      console.log(pil)
+      return this.rezz=this.rezz.filter(post=>post.age.includs(pil))
+     
+      // console.log(pil)
     }
    },
 
