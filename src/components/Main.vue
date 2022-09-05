@@ -109,12 +109,13 @@ export default {
    },
    watch:{
     searchr(pil){
-      return this.rezz=this.rezz.filter(post=>post.age.includs(pil))
-     
+      pil=pil.toUpperCase()
       // console.log(pil)
+       // this.rezz=this.rezz.toUpperCase()
+      return this.rezz=this.rezz.filter(post=>post.name.toUpperCase().includes(pil))
+     // txt = txt.toUpperCase();
     }
    },
-
 
    computed:{
     // sortedPost(){
