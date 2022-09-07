@@ -1,5 +1,5 @@
 <template>
-{{searchr}}
+
   <Filter @revers='rport' v-model='selectedSort'></Filter>
   <Cards  :cardrezz='rezz' :nameButton='bag'></Cards>
   <div class="container">    

@@ -52,7 +52,7 @@
           <button type="button" class="btn btn-outline-danger">КОРЗИНА</button>
         </li>
       </ul>
-      <form class="d-flex">
+      <form class="d-flex" >
         <!-- поле поиска -->
         <input v-model='searchvalue' class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button @click='searchr'  class="btn btn-outline-success" >Search</button>
@@ -73,7 +73,8 @@ export default {
     }
   },
   methods:{
-    searchr(){
+    searchr(event){
+      event.preventDefault()
       this.$emit('setcher',this.searchvalue)
       // console.log(this.searchvalue)
       this.searchvalue=''
