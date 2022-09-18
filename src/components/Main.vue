@@ -109,11 +109,9 @@ export default {
    },
    watch:{
     searchr(pil){
-      pil=pil.toUpperCase()
-      // console.log(pil)
-       // this.rezz=this.rezz.toUpperCase()
-      return this.rezz=this.rezz.filter(post=>post.name.toUpperCase().includes(pil))
-     // txt = txt.toUpperCase();
+      pil=pil.toUpperCase()      
+      return [...this.rezz]=this.rezz.filter(post=>post.name.toUpperCase().includes(pil))
+     
     }
    },
 

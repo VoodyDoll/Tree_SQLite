@@ -55,7 +55,7 @@
       <form class="d-flex" >
         <!-- поле поиска -->
         <input v-model='searchvalue' class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button @click='searchr'  class="btn btn-outline-success" >Search</button>
+        <!-- <button @click='searchr'  class="btn btn-outline-success" >Search</button> -->
       </form>
     </div>
   </div>
@@ -73,11 +73,16 @@ export default {
     }
   },
   methods:{
-    searchr(event){
-      event.preventDefault()
+    // searchr(event){
+    //   event.preventDefault()
+    //   this.$emit('setcher',this.searchvalue)
+    //   // console.log(this.searchvalue)
+    //   this.searchvalue=''
+    // }
+  },
+  watch:{
+    searchvalue(){
       this.$emit('setcher',this.searchvalue)
-      // console.log(this.searchvalue)
-      this.searchvalue=''
     }
   }
 }
