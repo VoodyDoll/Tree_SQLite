@@ -1,7 +1,8 @@
 <template>
 
   <Filter @revers='rport' v-model='selectedSort'></Filter>
-  <Cards  :cardrezz='rezz' :nameButton='bag'></Cards>
+  <Cards v-if='!isvisible' :cardrezz='rezz' :nameButton='bag'></Cards>
+  <p v-else>Идет загрузка....</p>
   <div class="container">    
 
     <!-- КОРЗИНКА МАГАЗИНА -->
@@ -75,7 +76,8 @@ export default {
         modalWindow:false,
         bagWindow:false,
         selectedSort:'',
-        toot:''
+        toot:'',
+        isvisible:false
         
       }
     },
@@ -98,6 +100,8 @@ export default {
       
     },
     mounted(){
+      
+      this.isvisible=true
      fetch('http://localhost:3000',{ 
       method: 'GET',
       headers: {
@@ -105,7 +109,9 @@ export default {
       },      
     })
      .then(res=>res.json())                 
-     .then(data=>this.rezz=data) 
+     .then(data=>this.rezz=data)      
+     .then(data=>this.isvisible=false)      
+      
    },
    watch:{
     searchr(pil){
