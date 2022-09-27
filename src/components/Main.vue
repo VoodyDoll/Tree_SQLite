@@ -77,7 +77,10 @@ export default {
         bagWindow:false,
         selectedSort:'',
         toot:'',
-        isvisible:false
+        isvisible:false,
+        page:1,
+        limit:12,
+        totalPages:0
         
       }
     },
@@ -97,12 +100,11 @@ export default {
         }        
 
         }
-      
+        
     },
-    mounted(){
-      
+    mounted(){      
       this.isvisible=true
-     fetch('http://localhost:3000',{ 
+     fetch(`http://localhost:3000?limit=${this.limit}&page=4`,{ 
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
@@ -110,6 +112,8 @@ export default {
     })
      .then(res=>res.json())                 
      .then(data=>this.rezz=data)      
+     // .then(data=>this.totalPages=Math.ceil(totolpost/this.limit))  
+          
      .then(data=>this.isvisible=false)      
       
    },

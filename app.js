@@ -10,15 +10,27 @@ app.use(function(req,res,next){
    next();
 });
 
-app.get('/',(req, res)=> {
-  db.all("SELECT * FROM root", (err, row)=> {
-    console.log(err)
+app.get('/',(req, res)=> {  
+
+     db.each('SELECT COUNT(*) FROM root', (err, row1)=> {
+    // количество записей
+    console.log(row1['COUNT(*)'])
+    // номер страницы
+    console.log(req.query.page)
+
+    // res.row1
+})      
+
+    
+  db.all(`SELECT * FROM root LIMIT ${req.query.limit}`, (err, row2)=> {
     // console.log(row)
-    res.json(row)          
+
+    console.log(err)
+    // 
+    // 
+    res.json(row2)          
         }) 
 });
-
-
 
  app.listen(3000, () => {
     console.log(`[OK] Server is running on localhost:`);
