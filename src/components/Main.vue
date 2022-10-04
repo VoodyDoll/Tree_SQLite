@@ -104,7 +104,7 @@ export default {
     },
     mounted(){      
       this.isvisible=true
-     fetch(`http://localhost:3000?limit=${this.limit}&page=4`,{ 
+     fetch(`http://localhost:3000?limit=${this.limit}&page=2`,{ 
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
