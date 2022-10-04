@@ -14,9 +14,11 @@ app.get('/',(req, res)=> {
 
      db.each('SELECT COUNT(*) FROM root', (err, row1)=> {
     // количество записей
-    console.log(row1['COUNT(*)'])
+    // console.log(typeof(row1['COUNT(*)']))
     // номер страницы
-    console.log(req.query.page)
+    // console.log(req.query.page)
+    // количество страниц
+    console.log(Math.ceil(Number(row1['COUNT(*)'])/req.query.limit))
 
     // res.row1
 })      
