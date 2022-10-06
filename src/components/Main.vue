@@ -1,8 +1,20 @@
 <template>
 
+{{totalPages}}
   <Filter @revers='rport' v-model='selectedSort'></Filter>
   <Cards v-if='!isvisible' :cardrezz='rezz' :nameButton='bag'></Cards>
   <p v-else>Идет загрузка....</p>
+  <!-- страницы -->
+  <div class="page_wrapper">
+  <div v-for="pagenumber in totalPages"
+   :key='pagenumber' 
+   class='page' 
+   :class="{'curent_page':page === pagenumber}"
+   @click='changePage(pagenumber)'
+   >
+    {{pagenumber}}
+  </div>
+  </div>
   <div class="container">    
 
     <!-- КОРЗИНКА МАГАЗИНА -->
@@ -99,12 +111,26 @@ export default {
           return post2['age']-post1['age']})
         }        
 
-        }
+        },
+        // страницы
+      changePage(pagenumber){
+        this.page=pagenumber
+         fetch(`http://localhost:3000?limit=${this.limit}&page=${this.page}`,{ 
+          method: 'GET',
+          headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },      
+    })
+     .then(res=>res.json())                 
+     .then(data=>this.rezz=data)  
+
+
+      }  
         
     },
     mounted(){      
       this.isvisible=true
-     fetch(`http://localhost:3000?limit=${this.limit}&page=2`,{ 
+     fetch(`http://localhost:3000?limit=${this.limit}`,{ 
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
@@ -112,12 +138,13 @@ export default {
     })
      .then(res=>res.json())                 
      .then(data=>this.rezz=data)      
-     // .then(data=>this.totalPages=Math.ceil(totolpost/this.limit))  
+     .then(data=>this.totalPages=Math.ceil(Number(this.rezz[0].allposition)/this.limit))  
           
      .then(data=>this.isvisible=false)      
-      
+      // this.totalPages=Math.ceil(Number(rezz[0].allposition)/this.limit)
    },
    watch:{
+    // функция поиска
     searchr(pil){
       pil=pil.toUpperCase()      
       return [...this.rezz]=this.rezz.filter(post=>post.name.toUpperCase().includes(pil))
@@ -142,6 +169,18 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.page_wrapper{
+  display:flex;
+  margin-top:15px
+}
+.page{
+  border:1px solid black;
+  padding:10px
+}
+.curent_page{
+  border:3px solid teal
+}
+
 h3 {
   margin: 40px 0 0;
 }
