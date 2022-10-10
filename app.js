@@ -19,7 +19,7 @@ app.get('/',(req, res)=> {
         let next_page=is_page+Number(req.query.limit)
 
         // let ko=Number(row[0].allposition)-(req.query.limit*req.query.page)
-        console.log(`от${is_page}до${next_page}`)
+        // console.log(`от ${is_page} до ${next_page}`)
 
 // this.rezz[0]
     // количество записей
@@ -34,6 +34,7 @@ app.get('/',(req, res)=> {
     // res.row1
 })      
 
+ 
 //   db.each('SELECT COUNT(*) FROM root', (err, row1)=> {
 //     // количество записей
 //     console.log(row1['COUNT(*)'])
@@ -43,6 +44,21 @@ app.get('/',(req, res)=> {
 // 
 //     // res.row1
 // })
+});
+
+app.get('/go',(req, res)=> {  
+
+    // страница от
+    let is_page=Number(req.query.limit*req.query.page-req.query.limit)
+        // страница до
+        let next_page=is_page+Number(req.query.limit)
+        console.log(`от ${is_page} до ${next_page}`)
+
+       db.all(`SELECT * FROM root WHERE id  BETWEEN ${is_page} AND ${next_page} LIMIT ${req.query.limit}`, (err, row)=> {
+
+    res.json(row)
+
+}) 
 });
 
  app.listen(3000, () => {

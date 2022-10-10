@@ -115,7 +115,7 @@ export default {
         // страницы
       changePage(pagenumber){
         this.page=pagenumber
-         fetch(`http://localhost:3000?limit=${this.limit}&page=${this.page}`,{ 
+         fetch(`http://localhost:3000/go?limit=${this.limit}&page=${this.page}`,{ 
           method: 'GET',
           headers: {
           'Content-Type': 'application/json;charset=utf-8'
