@@ -14,9 +14,9 @@ app.get('/',(req, res)=> {
 
      db.all(`SELECT * FROM root,(SELECT COUNT(*) AS allposition FROM root) LIMIT ${req.query.limit}`, (err, row)=> {
         // страница от
-        let is_page=Number(req.query.limit*req.query.page-req.query.limit)
+        // let is_page=Number(req.query.limit*req.query.page-req.query.limit)
         // страница до
-        let next_page=is_page+Number(req.query.limit)
+        // let next_page=is_page+Number(req.query.limit)
 
         // let ko=Number(row[0].allposition)-(req.query.limit*req.query.page)
         // console.log(`от ${is_page} до ${next_page}`)
@@ -52,9 +52,10 @@ app.get('/go',(req, res)=> {
     let is_page=Number(req.query.limit*req.query.page-req.query.limit)
         // страница до
         let next_page=is_page+Number(req.query.limit)
-        console.log(`от ${is_page} до ${next_page}`)
+        console.log(`от ${typeof(is_page)} до ${typeof(next_page)} предел ${typeof(Number(req.query.limit))}`)
+        console.log(`от ${is_page} до ${next_page} предел ${Number(req.query.limit)}`)
 
-       db.all(`SELECT * FROM root WHERE id  BETWEEN ${is_page} AND ${next_page} LIMIT ${req.query.limit}`, (err, row)=> {
+       db.all(`SELECT * FROM root WHERE id BETWEEN ${is_page} AND ${next_page} LIMIT ${Number(req.query.limit)}`, (err, row)=> {
 
     res.json(row)
 

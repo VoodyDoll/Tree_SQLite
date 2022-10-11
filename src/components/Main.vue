@@ -123,12 +123,10 @@ export default {
     })
      .then(res=>res.json())                 
      .then(data=>this.rezz=data)  
-
-
-      }  
-        
+      }          
     },
-    mounted(){      
+
+    created(){      
       this.isvisible=true
      fetch(`http://localhost:3000?limit=${this.limit}`,{ 
       method: 'GET',
