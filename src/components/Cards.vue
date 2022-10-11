@@ -9,6 +9,8 @@
         <div class="card-body">
           <h5 class="card-title">{{jo.name}}</h5>
           <p class="card-text">{{jo.age}}</p>
+          <p class="card-text">{{jo.allposition}}</p>
+          <p class="card-text">{{jo.id}}</p>
           
           
             <button class='btn btn-primary' @click="chenge_class($event)" >{{nameButton}}</button>
