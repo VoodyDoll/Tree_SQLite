@@ -125,7 +125,7 @@ export default {
      .then(data=>this.rezz=data)  
       }          
     },
-
+    // первый запуск
     created(){      
       this.isvisible=true
      fetch(`http://localhost:3000?limit=${this.limit}`,{ 

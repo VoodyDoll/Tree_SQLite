@@ -9,51 +9,27 @@ app.use(function(req,res,next){
    res.setHeader('Access-Control-Allow-Credentials',true);
    next();
 });
-
+// начальная загрузка
 app.get('/',(req, res)=> {  
 
      db.all(`SELECT * FROM root,(SELECT COUNT(*) AS allposition FROM root) LIMIT ${req.query.limit}`, (err, row)=> {
-        // страница от
-        // let is_page=Number(req.query.limit*req.query.page-req.query.limit)
-        // страница до
-        // let next_page=is_page+Number(req.query.limit)
-
-        // let ko=Number(row[0].allposition)-(req.query.limit*req.query.page)
-        // console.log(`от ${is_page} до ${next_page}`)
-
-// this.rezz[0]
-    // количество записей
-    // console.log(typeof(row1['COUNT(*)']))
-    // номер страницы
+        
     console.log(req.query.page)
-    // количество страниц
-    // console.log(Number(row['COUNT(*)']))
-    // console.log(row.name)
-    // console.log(row)
+    
      res.json(row)
-    // res.row1
-})      
+    
+})       
 
- 
-//   db.each('SELECT COUNT(*) FROM root', (err, row1)=> {
-//     // количество записей
-//     console.log(row1['COUNT(*)'])
-//     // номер страницы
-//     console.log(req.query.page)
-// console.log(Math.ceil(Number(row1['COUNT(*)'])/req.query.limit))
-// 
-//     // res.row1
-// })
 });
-
+// пагинация
 app.get('/go',(req, res)=> {  
 
     // страница от
     let is_page=Number(req.query.limit*req.query.page-req.query.limit)
         // страница до
         let next_page=is_page+Number(req.query.limit)
-        console.log(`от ${typeof(is_page)} до ${typeof(next_page)} предел ${typeof(Number(req.query.limit))}`)
-        console.log(`от ${is_page} до ${next_page} предел ${Number(req.query.limit)}`)
+        // console.log(`от ${typeof(is_page)} до ${typeof(next_page)} предел ${typeof(Number(req.query.limit))}`)
+        // console.log(`от ${is_page} до ${next_page} предел ${Number(req.query.limit)}`)
 
        db.all(`SELECT * FROM root WHERE id BETWEEN ${is_page} AND ${next_page} LIMIT ${Number(req.query.limit)}`, (err, row)=> {
 
