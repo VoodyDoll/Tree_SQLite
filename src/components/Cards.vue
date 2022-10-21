@@ -47,15 +47,35 @@ export default {
    methods:{ 
          // изменяет класс кнопки при клике по ней 
       chenge_class(event,name,age,allposition,id){
-        event.target.className=='btn btn-danger'?event.target.className='btn btn-primary':event.target.className='btn btn-danger'
-        this.bag_stor.push({name,age,allposition,id})
+
+        event.target.className=='btn btn-danger'?this.change1(name,age,allposition,id):this.change2(name,age,allposition,id)
+
         localStorage.setItem('bag_stor',JSON.stringify(this.bag_stor))
         console.log(this.bag_stor)
         // this.bag_stor.destroy
+      },
+
+      change1(name,age,allposition,id){
+
+        event.target.className='btn btn-primary'
+        // console.log(age)
+
+        for (let i = this.bag_stor.length; i--; ) {
+          if (this.bag_stor[i].age === age) {
+            this.bag_stor.splice(i, 1);
+            }
+        }
+
+        },
+
+      change2(name,age,allposition,id){
+
+        event.target.className='btn btn-danger'
+
+        this.bag_stor.push({name,age,allposition,id})
       }
-      // selBody(jo){
-      //   
-      // }      
+
+          
     },
 }
 </script>
