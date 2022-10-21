@@ -2,13 +2,14 @@
   <carusel></carusel>
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"> -->
   <nav-bar @setcher='searchr'></nav-bar>
-  <bag-window></bag-window>
+  <bag-window v-if=true></bag-window>
 </template>
 
 <script>
   import Carusel from '@/components/Carusel.vue'
   import NavBar from '@/components/NavBar.vue'
   import BagWindow from '@/components/BagWindow.vue'
+
   export default {
     components:{
       Carusel,

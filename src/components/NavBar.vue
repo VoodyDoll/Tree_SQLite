@@ -48,6 +48,7 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
+        <!-- кнопка корзины -->
         <li class="nav-item" v-if='case'>
           <button type="button" class="btn btn-outline-danger">КОРЗИНА</button>
         </li>

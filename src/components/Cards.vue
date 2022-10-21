@@ -13,7 +13,7 @@
           <p class="card-text">{{jo.id}}</p>
           
           
-            <button class='btn btn-primary' @click="chenge_class($event)" >{{nameButton}}</button>
+            <button class='btn btn-primary' @click="chenge_class($event,jo.name,jo.age,jo.allposition,jo.id)">{{nameButton}}</button>
             
           </div>
         </div>
@@ -40,37 +40,21 @@ export default {
 
   data () {
     return {
-      serch:''
-
+      serch:'',
+      bag_stor:[]
     }
   },
    methods:{ 
-
-
-
          // изменяет класс кнопки при клике по ней 
-      chenge_class(){
-        if (event.target.className=='btn btn-danger') {
-          // this.bagWindow=true
-        }
-          // console.log('555')
-        // }else{
-        //   console.log(event.target.className)
-        //  this.modalWindow=true    
-        this.caseLoad({case:this.case})     
-        event.target.className='btn btn-primary'      
-        event.target.className='';
-        event.target.className='btn btn-danger';
-        event.target.style= 'width:250px';
-        event.target.innerHTML='в корзинке';
-        event.target.innerHTML.style='font-size:18px';
-
-        // localStorage.setItem('ko','joo')
-
-        // }
+      chenge_class(event,name,age,allposition,id){
+        event.target.className=='btn btn-danger'?event.target.className='btn btn-primary':event.target.className='btn btn-danger'
+        this.bag_stor.push({name,age,allposition,id})
+        localStorage.setItem('bag_stor',JSON.stringify(this.bag_stor))
+        console.log(this.bag_stor)
+        // this.bag_stor.destroy
       }
       // selBody(jo){
-      //   localStorage.setItem('ko',jo)
+      //   
       // }      
     },
 }
