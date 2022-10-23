@@ -2,7 +2,7 @@
 
 {{totalPages}}
   <Filter @revers='rport' v-model='selectedSort'></Filter>
-  <Cards v-if='!isvisible' :cardrezz='rezz' :nameButton='bag'></Cards>
+  <Cards v-if='!isvisible' :cardrezz='rezz' :nameButton='bag' @button_navbar='buttonna'></Cards>
   <p v-else>Идет загрузка....</p>
   <!-- страницы -->
   <div class="page_wrapper">
@@ -16,47 +16,6 @@
   </div>
   </div>
   <div class="container">    
-
-    <!-- КОРЗИНКА МАГАЗИНА -->
-    <!-- <div v-if="bagWindow" class="bagWindow">
-      <div class="container">
-        <div class="row">
-          <div class="col с0 text-start bg-danger text-white fs-4 text">Корзина</div>    
-        </div>
-        <div class="row">
-          <div class="col c1"></div>
-          <div class="col c2">Товар</div>
-          <div class="col c3">Цена</div>
-          <div class="col c4">Количество</div>
-          <div class="col c5">Итого</div>
-        </div>
-
-        <div class="row">
-          <div class="col-12 text-end">СУММА ЗАКАЗОВ</div>
-         </div>
-
-        <div class="row justify-content-md-end">          
-          <div class="col-2">Подытог</div>
-          <div class="col-2">col-8</div>
-        </div>  
-        <div class="row justify-content-md-end">          
-          <div class="col-2">Доставка</div>
-          <div class="col-2">col-8</div>
-        </div> 
-         <div class="row justify-content-md-end">          
-          <div class="col-2">Итого</div>
-          <div class="col-2">col-8</div>
-        </div>  
-        <div class="row justify-content-md-end ">          
-          <div class="col-4 bg-danger text-white">ОФОРМИТЬ ЗАКАЗ</div>
-          
-        </div>     
-        
-      </div>
-    </div> -->
-    <!--  -->
-
-
   </div>
 </template>
 
@@ -84,7 +43,7 @@ export default {
       datat:null,        
       bag:'В корзинку+',
         // кнопка в карзину 
-        case:false,
+        case:'',
         modalWindow:false,
         bagWindow:false,
         selectedSort:'',
@@ -123,6 +82,13 @@ export default {
     })
      .then(res=>res.json())                 
      .then(data=>this.rezz=data)  
+      },
+      // кнопка в navbar
+      buttonna(cased){
+
+        console.log(cased)
+        this.$emit('button_navbar',cased)
+        
       }          
     },
     // первый запуск

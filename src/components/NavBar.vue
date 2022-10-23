@@ -53,6 +53,7 @@
           <button type="button" class="btn btn-outline-danger">КОРЗИНА</button>
         </li>
       </ul>
+      {{case}}
       <form class="d-flex" >
         <!-- поле поиска -->
         <input v-model='searchvalue' class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -67,10 +68,16 @@
 export default {
 
   name: 'NavBar',
+  props:{
+    case:{
+      type:Boolean
+    }
+  },
 
   data () {
     return {
-      searchvalue:''
+      searchvalue:'',
+      // cased:false
     }
   },
   methods:{

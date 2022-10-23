@@ -1,7 +1,8 @@
 <template>
   <carusel></carusel>
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"> -->
-  <nav-bar @setcher='searchr'></nav-bar>
+  <nav-bar @setcher='searchr' :case='cased'></nav-bar>
+  {{cased}}
   <bag-window v-if=true></bag-window>
 </template>
 
@@ -16,7 +17,13 @@
       NavBar,
       BagWindow
     },
-    props:['case'],
+    props:{    
+
+      cased:{
+        type:Boolean
+      },
+
+    },
     data(){
       return{
         you:'Dependances',

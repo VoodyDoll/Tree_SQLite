@@ -41,12 +41,17 @@ export default {
   data () {
     return {
       serch:'',
-      bag_stor:[]
+      bag_stor:[],
+      case:false
     }
   },
    methods:{ 
-         // изменяет класс кнопки при клике по ней 
+         // изменяет класс и запись в localstor при клике по ней 
       chenge_class(event,name,age,allposition,id){
+        // включеине кнопки в navbar
+        this.case=true
+
+        this.$emit('button_navbar',this.case)
 
         event.target.className=='btn btn-danger'?this.change1(name,age,allposition,id):this.change2(name,age,allposition,id)
 
