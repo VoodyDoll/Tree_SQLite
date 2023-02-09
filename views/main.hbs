@@ -1,8 +1,15 @@
 <p>Захфрия</p>
 <h1>{{{ layout }}}</h1>
-
+{{> loved}}
 <ul>
 	<a href="/computed"><li>Расчетё поправок</li></a>
 	<a href="/copasity"><li>Погрешность</li></a>
 	<a href="/system"><li>Систематика</li></a>
+</ul>
+
+<p>Поток</p>
+<ul>
+	{{#each kot}}
+		<li>{{this.name}}</li>
+	{{/each}}
 </ul>

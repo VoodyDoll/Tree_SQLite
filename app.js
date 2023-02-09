@@ -2,7 +2,8 @@ const express = require('express')
 const app = express()
 const port = 3000
 const { engine } = require ('express-handlebars')
-
+let indexRouter = require('./routes/index');
+// let usersRouter = require('./routes/users');
 app.set('view engine','hbs')
 
 app.engine('hbs', engine({
@@ -12,10 +13,11 @@ app.engine('hbs', engine({
 }));
 
 app.use(express.static('public'))
+// Подключение роутеров
+app.use('/', indexRouter);
+// app.use('/users', usersRouter);
 
-app.get('/', (req, res)=> {
-  res.render('main',{layout:'planB'})
-})
+
 
 app.listen(port, ()=> {
   console.log('Example app listening on port')
