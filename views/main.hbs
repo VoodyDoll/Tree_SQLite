@@ -1,15 +1,52 @@
-<p>Захфрия</p>
-<h1>{{{ layout }}}</h1>
+<!-- <h1>{{{ layout }}}</h1> -->
 {{> loved}}
-<ul>
-	<a href="/computed"><li>Расчетё поправок</li></a>
-	<a href="/copasity"><li>Погрешность</li></a>
-	<a href="/system"><li>Систематика</li></a>
-</ul>
 
-<p>Поток</p>
-<ul>
+<!-- <ul>
 	{{#each kot}}
 		<li>{{this.name}}</li>
 	{{/each}}
-</ul>
+</ul> -->
+
+{{#each kot}}
+<div class="card" style="width: 18rem;">
+  <img src={{this.img}} class="rounded mx-auto d-block" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{description}}</h5>
+    <p class="card-text">{{cost}}<span> руб</span></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+    	<div class="accordion accordion-flush" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+        Состав блюда
+      </button>
+    </h2>
+    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+        Методика приготовления
+      </button>
+    </h2>
+    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+    </div>
+  </div>
+
+</div>
+
+    </li>
+    <li class="list-group-item"><button class="btn btn-primary">Заказать</button></li>
+    <li class="list-group-item"><button class="btn btn-danger">Удалить заказ</button></li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+{{/each}}

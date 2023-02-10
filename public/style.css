@@ -1,3 +1,15 @@
 p{
 	color:red;
 }
+
+.card{
+	display: inline-block;
+	margin-top: 25px;
+	margin-left: 25px;
+
+}
+
+img{
+	width: 279px;
+	height: 230px;
+}
