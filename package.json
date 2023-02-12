@@ -11,7 +11,8 @@
   "dependencies": {
     "@popperjs/core": "^2.11.6",
     "express": "~4.18.2",
-    "express-handlebars": "~6.0.7"
+    "express-handlebars": "~6.0.7",
+    "mongodb": "^5.0.1"
   },
   "devDependencies": {
     "bootstrap": "^5.2.3",
