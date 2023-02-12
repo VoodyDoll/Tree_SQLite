@@ -6,7 +6,7 @@ db.probucts.insert({
 
 })
 
-db.probucts.insertMany([
+db.products.insertMany([
 {name:'Прекрасная стерлядь',cost:150,consist:'skfksflsdf',metods:'fsss',img:'./images/boot1.jpg'},
 {name:'Прекрасная вобла',cost:200,consist:'skfksflsdf',metods:'fsss',img:'./images/boot2.jpg'},
 {name:'Прекрасная куница',cost:300,consist:'skfksflsdf',metods:'fsss',img:'./images/boot3.jpg'},

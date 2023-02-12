@@ -8,26 +8,14 @@ router.get('/', (req, res)=> {
 const url = "mongodb://localhost:27017/";
 const mongoClient = new MongoClient(url);
  
+// получение данных из базы
 async function run() {
     try {
-    	// Подключаемся к серверу
         await mongoClient.connect();
-        // обращаемся к базе данных begine
-        const db = mongoClient.db("begine");
-         // обращаемся к коллекции people
-        const collection = db.collection("people");
-        // определяем кол-во документов в коллекции
-        const count = await collection.countDocuments();
-
-        console.log(`В коллекции users ${count} документа/ов`);
-    }catch(err) {
-        console.log(err);
-    } finally {
-        await mongoClient.close();
-    }
-}
-run().catch(console.error);
-
+        const db = mongoClient.db("caffe");
+        const collection = db.collection("products");
+        const results = await collection.find().toArray();
+        console.log(results);
 
 let kot=[
 	{id:1,name:'gus',img:'./images/boot1.jpg',description:'Прекрасная стерлядь',cost:'150'},
@@ -37,9 +25,25 @@ let kot=[
 	{id:5,name:'girl',img:'./images/boot3.jpg',description:'Прекрасная куница',cost:'300'}
 
 ]
+res.render('main',{layout:'planB',results:results,kot:kot})
 	
+	
+  // res.render('main',{layout:'planB',kot:kot})
 
-  res.render('main',{layout:'planB',kot:kot})
+
+
+
+          
+    }catch(err) {
+        console.log(err);
+    } finally {
+        await mongoClient.close();
+    }
+}
+run().catch(console.error);
+
+
+ 
 })
 
 module.exports = router;

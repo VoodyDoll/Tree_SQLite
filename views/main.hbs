@@ -7,6 +7,14 @@
 	{{/each}}
 </ul> -->
 
+<ul>
+{{#each results}}
+
+  <li>{{this.name}}</li>
+
+{{/each}}
+</ul>
+
 {{#each kot}}
 <div class="card" style="width: 18rem;">
   <img src={{this.img}} class="rounded mx-auto d-block" alt="...">
