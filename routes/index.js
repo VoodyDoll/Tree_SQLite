@@ -31,9 +31,11 @@ router.get('/', (req, res)=> {
  db.all("SELECT * FROM root", (err, row)=> {
     console.log(err)
     console.log(row)
-    // res.json(row)          
-        }) 
 
+
+// res.render('main',{layout:'planB',row:row,kot:kot})
+    // res.json(row)          
+         
 
 let kot=[
 	{id:1,name:'gus',img:'./images/boot1.jpg',description:'Прекрасная стерлядь',cost:'150'},
@@ -45,7 +47,7 @@ let kot=[
 ]
 	
 
-  res.render('main',{layout:'planB',kot:kot})
+  res.render('main',{layout:'planB',row:row,kot:kot})
 })
-
+})
 module.exports = router;
