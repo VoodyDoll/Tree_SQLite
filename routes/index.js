@@ -28,7 +28,7 @@ router.get('/', (req, res)=> {
 
 // db.close();
 // Подключение SQLite
- db.all("SELECT * FROM root", (err, row)=> {
+ db.all("SELECT * FROM coffe", (err, row)=> {
     console.log(err)
     console.log(row)
 
@@ -51,3 +51,4 @@ let kot=[
 })
 })
 module.exports = router;
+

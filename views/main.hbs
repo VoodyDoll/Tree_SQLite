@@ -7,12 +7,12 @@
 	{{/each}}
 </ul>
 
-{{#each kot}}
+{{#each row}}
 <div class="card" style="width: 18rem;">
   <img src={{this.img}} class="rounded mx-auto d-block" alt="...">
   <div class="card-body">
-    <h5 class="card-title">{{description}}</h5>
-    <p class="card-text">{{cost}}<span> руб</span></p>
+    <h5 class="card-title">{{this.name}}</h5>
+    <p class="card-text">{{this.cost}}<span> руб</span></p>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">
@@ -24,7 +24,7 @@
       </button>
     </h2>
     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+      <div class="accordion-body">{{this.consists}}</div>
     </div>
   </div>
   <div class="accordion-item">
@@ -34,7 +34,7 @@
       </button>
     </h2>
     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+      <div class="accordion-body">{{this.method}}</div>
     </div>
   </div>
 

@@ -8,3 +8,23 @@ git checkout $branch_name -- $paths_to_file
 где paths путь до файла, возможно можно указать сразу несколько путей через пробел, не помню уже
 
 Ну конечно же в той ветке, в которую вы изначально файлы поместили, они останутся, их нужно удалить самому, если они не нужны там.
+
+CREATE TABLE coffe (
+    post_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    cost INT,
+    consists TEXT,
+    method TEXT, 
+    img TEXT
+    );
+
+INSERT INTO coffe ( name, cost, consists, method, img )
+VALUES ( 'Прекрасная куница',
+ 300 ,
+'shbtaky',
+ 'Great tutorial for beginners.',
+ './images/boot3.jpg'
+  );
+
+  SELECT *
+FROM coffe;
