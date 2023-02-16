@@ -1,6 +1,11 @@
 <!-- <h1>{{{ layout }}}</h1> -->
 {{> loved}}
 
+{{#if choice_cost}}
+<p>
+  {{choice_cost}}
+</p>
+{{/if}}
 <!-- <ul>
 	{{#each row}}
 		<li>{{this.name}}</li>
@@ -12,7 +17,7 @@
   <img src={{this.img}} class="rounded mx-auto d-block" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{this.name}}</h5>
-    <p class="card-text">{{this.cost}}<span> руб</span></p>
+    <p class="card-text">{{this.cost}}<span>руб</span></p>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">
