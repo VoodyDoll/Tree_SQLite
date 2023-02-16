@@ -29,8 +29,8 @@ router.get('/', (req, res)=> {
 // db.close();
 // Подключение SQLite
  db.all("SELECT * FROM coffe", (err, row)=> {
-    console.log(err)
-    console.log(row)
+    // console.log(err)
+    // console.log(row)
 
 
 // res.render('main',{layout:'planB',row:row,kot:kot})
