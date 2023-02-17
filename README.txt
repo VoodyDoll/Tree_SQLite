@@ -19,12 +19,18 @@ CREATE TABLE coffe (
     );
 
 INSERT INTO coffe ( name, cost, consists, method, img )
-VALUES ( 'Прекрасная куница',
- 300 ,
+VALUES ( 'Прекрасная звезда',
+ 900 ,
 'shbtaky',
  'Great tutorial for beginners.',
- './images/boot3.jpg'
+ './images/boot7.jpg'
   );
 
   SELECT *
 FROM coffe;
+
+Но repId не входит в объект FindedUsers, а передаётся отдельно.
+Собственно вопрос, как я могу добавить его внутри цикла each?:
+
+<input type="hidden" name="repId" value="{{../repId}}">
+

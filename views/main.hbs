@@ -6,11 +6,7 @@
   {{choice_cost}}
 </p>
 {{/if}}
-<!-- <ul>
-	{{#each row}}
-		<li>{{this.name}}</li>
-	{{/each}}
-</ul> -->
+
 
 {{#each row}}
 <div class="card" style="width: 18rem;">
@@ -55,3 +51,13 @@
   </div>
 </div>
 {{/each}}
+<!-- пагинация -->
+<nav  aria-label="Page navigation example" >
+  <ul class="pagination justify-content-center">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    {{#total_pages}}
+    <li class="page-item"><a class="page-link" href="#">{{this}}</a></li>
+    {{/total_pages}}
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
