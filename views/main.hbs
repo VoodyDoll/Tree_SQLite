@@ -55,9 +55,9 @@
 <nav  aria-label="Page navigation example" >
   <ul class="pagination justify-content-center">
     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    {{#total_pages}}
+    {{#each total_pages }}
     <li class="page-item"><a class="page-link" href="#">{{this}}</a></li>
-    {{/total_pages}}
+    {{/each}}
     <li class="page-item"><a class="page-link" href="#">Next</a></li>
   </ul>
 </nav>

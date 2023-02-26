@@ -1,42 +1,41 @@
 let express = require('express')
 let app = express()
 let { engine } = require ('express-handlebars')
+let helpers=require('./components/hbsHelpers')
 // Подключение SQLite
-var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database(':memory:');
+// var sqlite3 = require('sqlite3').verbose();
+// var db = new sqlite3.Database(':memory:');
 
-db.serialize(function() {
+// db.serialize(function() {
 
-  db.run('CREATE TABLE lorem (info TEXT)');
-  var stmt = db.prepare('INSERT INTO lorem VALUES (?)');
+//   db.run('CREATE TABLE lorem (info TEXT)');
+//   var stmt = db.prepare('INSERT INTO lorem VALUES (?)');
 
-  for (var i = 0; i < 10; i++) {
-    stmt.run('Ipsum ' + i);
-  }
+//   for (var i = 0; i < 10; i++) {
+//     stmt.run('Ipsum ' + i);
+//   }
 
-  stmt.finalize();
+//   stmt.finalize();
 
-  db.each('SELECT rowid AS id, info FROM lorem', function(err, row) {
-    console.log(row.id + ': ' + row.info);
-  });
-});
+//   db.each('SELECT rowid AS id, info FROM lorem', function(err, row) {
+//     console.log(row.id + ': ' + row.info);
+//   });
+// });
 
-db.close();
-
-
-
-
-// let bootstrap=require('bootstrap')
-let port = 3000
-let indexRouter = require('./routes/index');
+// db.close();
 
 app.set('view engine','hbs')
 
 app.engine('hbs', engine({
-	extname:'hbs',
-	defaultLayout:'index',
-	partialsDir:'./views/partials'
+  extname:'hbs',
+  defaultLayout:'index',
+  partialsDir:'./views/partials',
+  registerHelper:'./components/hbsHelpers'
 }));
+
+
+let port = 3000
+let indexRouter = require('./routes/index');
 
 app.use(express.static('public'))
 // подключение bootstrup
