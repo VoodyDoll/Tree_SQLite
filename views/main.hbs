@@ -6,7 +6,7 @@
   {{choice_cost}}
 </p>
 {{/if}}
-{{for 4}}
+
 
 {{#each row}}
 <div class="card" style="width: 18rem;">
@@ -56,8 +56,10 @@
   <ul class="pagination justify-content-center">
     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
     
-    <li class="page-item"><a class="page-link" href="#">{{this}}</a></li>
-    
+    {{{for total_pages}}}
+
+    <!-- <li class="page-item"><a class="page-link" href="#">{{this}}</a></li> -->
+   
     <li class="page-item"><a class="page-link" href="#">Next</a></li>
   </ul>
 </nav>

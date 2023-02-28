@@ -3,12 +3,11 @@ var router = express.Router();
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('SQL/roots.db');
 
-
 // пагинация
 let page=1;
 let limit=8;
 let total_pages=0;
-let all_posts=10;
+let all_posts=24;
 
 // общее кол-во постов
 total_pages=Math.ceil(all_posts/limit);
