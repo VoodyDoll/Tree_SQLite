@@ -3,7 +3,7 @@ let helper={
 	let result = []
 	for (var i = 1; i <= add; i++) {
 		result+='<li class="page-item"><a class="page-link" href="#">'+ i +'</a></li>'
-}
+	}
 	return result
 
 	}

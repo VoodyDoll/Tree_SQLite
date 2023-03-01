@@ -16,10 +16,20 @@ console.log(total_pages)
 // основная страница
 router.get('/', (req, res)=> {
 
+// SELECT id_topic, COUNT(id_topic) FROM posts
+//      GROUP BY id_topic;
  db.all("SELECT * FROM coffe", (err, row)=> {
 
-  res.render('main',{layout:'planB',row:row,total_pages:total_pages})
+  // res.render('main',{layout:'planB',row:row,total_pages:total_pages})
+
+db.each("SELECT COUNT(*) AS datacount FROM coffe", (err, roww)=> {
+console.log(roww)
+  res.render('main',{layout:'planB',roww:roww,row:row,total_pages:total_pages})
+
 })
+
+})
+
 })
 
 // фильтр дешовых продуктов
