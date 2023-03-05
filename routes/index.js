@@ -10,17 +10,13 @@ let limit=8;
 let total_pages=0;
 let all_posts=24;
 
-// общее кол-во постов
-// total_pages=Math.ceil(all_posts/limit);
-// console.log(total_pages)
-
 router.get('/',(req, res)=> {  
-console.log(req.query.page)
+
     // страница от
     let is_page=Number(limit*req.query.page-limit)
         // страница до
         let next_page=is_page+limit      
-
+if (req.query.page) {
 db.each("SELECT COUNT(*) AS datacount FROM coffe", (err, roww)=> {
 
         total_pages=Math.ceil(roww.datacount/limit);         
@@ -31,27 +27,25 @@ db.each("SELECT COUNT(*) AS datacount FROM coffe", (err, roww)=> {
   
 }) 
 })
+}else {
+    // основная страница
 
+    // запросы на данные  
+     db.all(`SELECT * FROM coffe LIMIT ${limit}`, (err, row)=> {  
+    // запросы на пагинацию (общее кол-во старниц)
+    db.each("SELECT COUNT(*) AS datacount FROM coffe", (err, roww)=> {
+
+    total_pages=Math.ceil(roww.datacount/limit);
+
+      res.render('main',{layout:'planB',roww:total_pages,row:row})
+
+    })
+
+    })
+
+}
 
 });
-
-
-// основная страница
-// router.get('/', (req, res)=> {
-// // запросы на данные  
-//  db.all(`SELECT * FROM coffe LIMIT ${limit}`, (err, row)=> {  
-// // запросы на пагинацию (общее кол-во старниц)
-// db.each("SELECT COUNT(*) AS datacount FROM coffe", (err, roww)=> {
-
-// total_pages=Math.ceil(roww.datacount/limit);
-
-//   res.render('main',{layout:'planB',roww:total_pages,row:row})
-
-// })
-
-// })
-
-// / })
 
 // фильтр дешовых продуктов
 router.get('/low_cost', (req, res)=> {	
