@@ -25,7 +25,7 @@ router.get('/',(req, res)=> {
 // общее кол-во стараниц
                 total_pages=Math.ceil(row.length/limit);
 
-               res.render('main',{layout:'planB',roww:result_users,total_pages:total_pages})    
+               res.render('main',{layout:'planB',roww:result_users,cost:false,total_pages:total_pages})    
                
            }) 
         
@@ -41,7 +41,7 @@ router.get('/',(req, res)=> {
 
                 console.log(row)
            
-            res.render('main',{layout:'planB',roww:result_users,total_pages:total_pages})       
+            res.render('main',{layout:'planB',roww:result_users,cost:false,total_pages:total_pages})       
 
     })
 
@@ -52,32 +52,40 @@ router.get('/',(req, res)=> {
 // фильтр дешовых продуктов
 router.get('/low_cost', (req, res)=> {	
 
-is_page=Number(limit*req.query.page-limit)
-        // страница до
-    next_page=is_page+limit    
+if (req.query.page) {
 
-// if (req.query.page) {
+db.all(`SELECT * FROM coffe ORDER BY cost ASC`, (err, row)=> { 
+// Расчет страниц
+                 start_index=(req.query.page-1)*limit
 
-        db.each("SELECT COUNT(*) AS datacount FROM coffe", (err, roww)=> {
+                 end_index=req.query.page*limit
 
-            total_pages=Math.ceil(roww.datacount/limit);         
+                 result_users=row.slice(start_index, end_index)
 
-            db.all(`SELECT * FROM coffe WHERE post_id BETWEEN ${is_page} AND ${next_page} LIMIT ${limit}`, (err, row)=> {
+                console.log(result_users)
+// общее кол-во стараниц
+                total_pages=Math.ceil(row.length/limit);
 
-               res.render('main',{layout:'planB',roww:total_pages,row:row,choice_cost:'От дешовых к дорогим'})    
+               res.render('main',{layout:'planB',roww:result_users,cost:'low_cost',total_pages:total_pages,choice_cost:'От дешовых к дорогим'})    
                
            }) 
-      
-    // }else {
+     
+}else{
 
-    db.all(`SELECT * FROM coffe ORDER BY cost ASC LIMIT ${limit}`, (err, row)=> {
+    db.all(`SELECT * FROM coffe ORDER BY cost ASC`, (err, row)=> {  
+// общее кол-во стараниц
+        total_pages=Math.ceil(row.length/limit);
+// кол-во страниц на странице
+         result_users=row.slice(1, limit+1)        
 
-        res.render('main',{layout:'planB',row:row,choice_cost:'От дешовых к дорогим'})
+                console.log(row)
+           
+            res.render('main',{layout:'planB',roww:result_users,cost:'low_cost',total_pages:total_pages,choice_cost:'От дешовых к дорогим'})       
 
     })
-// }
+}
 
-})
+
 
   })
 
@@ -85,11 +93,55 @@ is_page=Number(limit*req.query.page-limit)
 // фильтр дорогих продуктов
 router.get('/expensive_cost', (req, res)=> {	
 
-    db.all("SELECT * FROM coffe ORDER BY cost DESC", (err, row)=> {
 
-        res.render('main',{layout:'planB',row:row,choice_cost:'От дорогих к дешовым'})
+if (req.query.page) {
+
+db.all(`SELECT * FROM coffe ORDER BY cost DESC`, (err, row)=> { 
+// Расчет страниц
+                 start_index=(req.query.page-1)*limit
+
+                 end_index=req.query.page*limit
+
+                 result_users=row.slice(start_index, end_index)
+
+                console.log(result_users)
+// общее кол-во стараниц
+                total_pages=Math.ceil(row.length/limit);
+
+               res.render('main',{layout:'planB',roww:result_users,cost:'expensive_cost',total_pages:total_pages,choice_cost:'От дорогих к дешовым'})    
+               
+           }) 
+     
+}else{
+
+    db.all(`SELECT * FROM coffe ORDER BY cost DESC`, (err, row)=> {  
+// общее кол-во стараниц
+        total_pages=Math.ceil(row.length/limit);
+// кол-во страниц на странице
+         result_users=row.slice(1, limit+1)        
+
+                console.log(row)
+           
+            res.render('main',{layout:'planB',roww:result_users,cost:'expensive_cost',total_pages:total_pages,choice_cost:'От дорогих к дешовым'})       
 
     })
+}
+
+
+
+
+//   db.all(`SELECT * FROM coffe ORDER BY cost DESC`, (err, row)=> {  
+// // общее кол-во стараниц
+//         total_pages=Math.ceil(row.length/limit);
+// // кол-во страниц на странице
+//          result_users=row.slice(1, limit+1)        
+
+//             console.log(row)
+           
+//         res.render('main',{layout:'planB',roww:result_users,total_pages:total_pages,choice_cost:'От дорогих к дешовым'})       
+
+//     })
+
 })
 
 module.exports = router;
