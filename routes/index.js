@@ -20,8 +20,7 @@ router.get('/',(req, res)=> {
                  end_index=req.query.page*limit
 
                  result_users=row.slice(start_index, end_index)
-
-                console.log(result_users)
+                
 // общее кол-во стараниц
                 total_pages=Math.ceil(row.length/limit);
 
@@ -37,9 +36,7 @@ router.get('/',(req, res)=> {
 // общее кол-во стараниц
         total_pages=Math.ceil(row.length/limit);
 // кол-во страниц на странице
-         result_users=row.slice(1, limit+1)        
-
-                console.log(row)
+         result_users=row.slice(1, limit+1)                      
            
             res.render('main',{layout:'planB',roww:result_users,cost:false,total_pages:total_pages})       
 
@@ -61,8 +58,7 @@ db.all(`SELECT * FROM coffe ORDER BY cost ASC`, (err, row)=> {
                  end_index=req.query.page*limit
 
                  result_users=row.slice(start_index, end_index)
-
-                console.log(result_users)
+                
 // общее кол-во стараниц
                 total_pages=Math.ceil(row.length/limit);
 
@@ -76,16 +72,12 @@ db.all(`SELECT * FROM coffe ORDER BY cost ASC`, (err, row)=> {
 // общее кол-во стараниц
         total_pages=Math.ceil(row.length/limit);
 // кол-во страниц на странице
-         result_users=row.slice(1, limit+1)        
-
-                console.log(row)
+         result_users=row.slice(1, limit+1)                   
            
             res.render('main',{layout:'planB',roww:result_users,cost:'low_cost',total_pages:total_pages,choice_cost:'От дешовых к дорогим'})       
 
     })
 }
-
-
 
   })
 
@@ -104,7 +96,7 @@ db.all(`SELECT * FROM coffe ORDER BY cost DESC`, (err, row)=> {
 
                  result_users=row.slice(start_index, end_index)
 
-                console.log(result_users)
+                
 // общее кол-во стараниц
                 total_pages=Math.ceil(row.length/limit);
 
@@ -120,27 +112,13 @@ db.all(`SELECT * FROM coffe ORDER BY cost DESC`, (err, row)=> {
 // кол-во страниц на странице
          result_users=row.slice(1, limit+1)        
 
-                console.log(row)
+                
            
             res.render('main',{layout:'planB',roww:result_users,cost:'expensive_cost',total_pages:total_pages,choice_cost:'От дорогих к дешовым'})       
 
     })
 }
 
-
-
-
-//   db.all(`SELECT * FROM coffe ORDER BY cost DESC`, (err, row)=> {  
-// // общее кол-во стараниц
-//         total_pages=Math.ceil(row.length/limit);
-// // кол-во страниц на странице
-//          result_users=row.slice(1, limit+1)        
-
-//             console.log(row)
-           
-//         res.render('main',{layout:'planB',roww:result_users,total_pages:total_pages,choice_cost:'От дорогих к дешовым'})       
-
-//     })
 
 })
 
