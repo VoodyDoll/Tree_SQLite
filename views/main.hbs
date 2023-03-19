@@ -51,15 +51,20 @@
   </div>
 </div>
 {{/each}}
+pre
+{{pre_page}}
+next
+{{next_page}}
+
 <!-- пагинация -->
 <nav  aria-label="Page navigation example" >
   <ul class="pagination justify-content-center">
-    <li class="page-item"><a class="page-link" href="#pre">Previous</a></li>
+    <li class="page-item"><a class="page-link" href=/?page={{pre_page}}>Previous</a></li>
     
     {{{for total_pages cost}}}
 
     <!-- <li class="page-item"><a class="page-link" href="#">{{thi}}</a></li> -->
    
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    <li class="page-item"><a class="page-link" href=/?page={{next_page}}>Next</a></li>
   </ul>
 </nav>
