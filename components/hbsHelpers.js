@@ -18,7 +18,7 @@ for (var i = 1; i <= add; i++) {
 	return result
 }
 
-if (cost==false) {
+if (!cost) {
 
 	for (var i = 1; i <= add; i++) {
 		result+='<li class="page-item"><a class="page-link" href="/?page='+i+'">'+ i +'</a></li>'
