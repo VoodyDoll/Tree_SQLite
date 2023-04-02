@@ -29,6 +29,8 @@ VALUES ( 'Прекрасная звезда',
   SELECT *
 FROM coffe;
 
+pragma table_info(coffe); получение имен столбцов
+
 Вход в базу даннных .open roots.db
 
 

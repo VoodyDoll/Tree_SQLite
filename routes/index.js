@@ -17,7 +17,7 @@ router.get('/',(req, res)=> {
 
             db.all(`SELECT * FROM coffe`, (err, row)=> { 
             // Расчет страниц   
-
+console.table(row[1].post_id)
                  start_index=(req.query.page-1)*limit
 // Pre_страницы
                 if (start_index > 0) {
