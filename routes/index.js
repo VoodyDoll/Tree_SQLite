@@ -17,7 +17,7 @@ router.get('/',(req, res)=> {
 
             db.all(`SELECT * FROM coffe`, (err, row)=> { 
             // Расчет страниц   
-console.table(row[1].post_id)
+// console.table(row[1].post_id)
                  start_index=(req.query.page-1)*limit
 // Pre_страницы
                 if (start_index > 0) {
@@ -51,7 +51,7 @@ console.table(row[1].post_id)
 // общее кол-во стараниц
         total_pages=Math.ceil(row.length/limit);
 // кол-во страниц на странице
-         result_users=row.slice(1, limit+1)                      
+         result_users=row.slice(0, limit)                      
            
             res.render('main',{layout:'planB',roww:result_users,total_pages:total_pages,pre_page:pre_page,next_page:next_page})       
 
@@ -87,7 +87,7 @@ db.all(`SELECT * FROM coffe ORDER BY cost ASC`, (err, row)=> {
 // общее кол-во стараниц
         total_pages=Math.ceil(row.length/limit);
 // кол-во страниц на странице
-         result_users=row.slice(1, limit+1)                   
+         result_users=row.slice(0, limit)                   
            
             res.render('main',{layout:'planB',roww:result_users,cost:'low_cost',pre_page:pre_page,next_page:next_page,total_pages:total_pages,choice_cost:'От дешовых к дорогим'})       
 

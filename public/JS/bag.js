@@ -2,34 +2,83 @@
 let mass_bag=[]
 let but_id=''
 
-let jo=document.querySelectorAll('.btn btn-primary order')
-for(let i of jo){
-  
-  console.log(i)
-  
-}
 
-
-if (localStorage.getItem('a')!=null) {
-	mass_bag=localStorage.getItem('a')
+// данные из localStorage
+let op=[]
+mass_bag=localStorage.getItem('a')
+// console.log(mass_bag)
+if (mass_bag!=null) {
 	mass_bag=JSON.parse(mass_bag)
-	// console.log(mass_bag)
+
 	for (let i of mass_bag) {
-
-
-		console.log(i.id)
+		i.id=Number(i.id)
+		op.push(i.id)
+		op=[...new Set(op)];
 
 	}
 }
+// console.log(op)
+// данные из страницы HTML
+let si=[]
+	let jo=document.querySelectorAll('.order')
 
+		for (let i of jo) {
+		// i.id=Number(i.id)
+		si.push(Number(i.dataset.id))
+		// si=[...new Set(op)];
 
+	}
+// console.log(si)
+// новый код
 
+for (let i = 0; i <= op.length; i++) {
+  if (si.includes(op[i])===true) {
+    console.log(op[i]);
+  }
+  // break  
+}
 
+// let butt=[]
+// let i = 0;
+// function po(i,op) {     
+  
+
+//   if (si.indexOf(op[i]) != -1 && i<=op.length) {
+
+//   	// jo[si[i]].setAttribute("disabled", "")
+//   	// jo[si[i]].innerHTML='Товар в карзине'
+//   	// jo[si[si.indexOf(op[i])]].innerHTML='Товар в карзине'
+//   	// jo[si[si.indexOf(op[i])]].setAttribute("disabled", "")
+  	
+//   	// butt.push(si[si.indexOf(op[i])])
+
+//   // jo.dataset.id==[si[si.indexOf(op[i])]].setAttribute("disabled", "")
+//   // for (i of jo) {
+//   // 	if (i.dataset.id==si[si.indexOf(op[i])]){
+//   // 		i.setAttribute("disabled", "")
+//   // 		i.innerHTML='Товар в карзине'
+//   // 	}
+//   // }  	
+// // let ss=jo.dataset.id==si[si.indexOf(op[i])]
+//     console.log(Number(jo[si[si.indexOf(op[i])]].dataset.id));     
+//     po(i+1,op);    
+        
+//   }else if(si.indexOf(op[i]) == -1 && i<=op.length){
+//      po(i+1,op);
+//   }
+  
+// }
+
+// po(i,op);
+
+// console.log(jo[0].dataset.id)
 
 document.onclick=event=> {
 
+	mass_bag=localStorage.getItem('a')
 
-
+	mass_bag=JSON.parse(mass_bag)
+			// console.log(mass_bag)
 
 	if (event.target.className=='btn btn-primary order') {
 
