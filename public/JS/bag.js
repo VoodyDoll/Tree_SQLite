@@ -19,24 +19,56 @@ if (mass_bag!=null) {
 }
 // console.log(op)
 // данные из страницы HTML
-let si=[]
+// let si=[]
 	let jo=document.querySelectorAll('.order')
 
-		for (let i of jo) {
-		// i.id=Number(i.id)
-		si.push(Number(i.dataset.id))
-		// si=[...new Set(op)];
 
-	}
+// let snoo = document.querySelector(".main");
+// let dii = snoo.querySelectorAll("button");
+// let jo = [1, 4, 8];
+// let storm=[]
+// let ds = 0;
+for (let i of jo) {
+  // console.log(typeof(Number(i.dataset.id)))
+  let cot = Number(i.dataset.id);
+  // console.log(cot)
+  // ds++;
+  if (op.includes(cot) === true) {
+    // i.innerHTML='DOOJD'
+    i.setAttribute("disabled", "")
+  		i.innerHTML='Товар в карзине'
+    // i.dataset.id == cot;
+    // console.log(cot);
+  } else {
+    // console.log("do not");
+  }
+
+  // console.log(i.dataset.id)
+}
+
+// let dot=0
+// 		for (i of jo) {
+
+// 		// si.push(Number(jo[i].dataset.id))	
+// dot++
+// 			if (i.dataset.id.includes(op[dot])===true) {
+
+
+// 			console.log('good')
+
+// }
+// 	}
 // console.log(si)
 // новый код
 
-for (let i = 0; i <= op.length; i++) {
-  if (si.includes(op[i])===true) {
-    console.log(op[i]);
-  }
-  // break  
-}
+// for (let i = 0; i <= op.length; i++) {
+//   if (si.includes(op[i])===true) {
+
+
+//     // console.log(jo[op[i]].dataset.id);
+//   }
+//   // break  
+// }
 
 // let butt=[]
 // let i = 0;
