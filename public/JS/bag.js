@@ -13,8 +13,9 @@ if (mass_bag!=null) {
 	for (let i of mass_bag) {
 		i.id=Number(i.id)
 		op.push(i.id)
-		op=[...new Set(op)];
-
+		// op=[...new Set(op)];
+		// tootorials
+		// knoot
 	}
 }
 
@@ -35,27 +36,27 @@ for (let i of jo) {
 		document.querySelector('.badge').innerHTML=op.length
 
 	} else {
-    document.querySelector('.badge').innerHTML=op.length
+		document.querySelector('.badge').innerHTML=op.length
 	}
-
 
 }
 // --------
+// --------Действие по нажатию кнопки
 document.onclick=event=> {
 
 	mass_bag=localStorage.getItem('a')
 
 	mass_bag=JSON.parse(mass_bag)
-			
+
 
 	if (event.target.className=='btn btn-primary order') {
-console.log(mass_bag)
+		// console.log(mass_bag)
 		
 		if (mass_bag===null) {
 
-document.querySelector('.badge').innerHTML=1
+			document.querySelector('.badge').innerHTML=1
 
-}else{document.querySelector('.badge').innerHTML=mass_bag.length+1}
+		}else{document.querySelector('.badge').innerHTML=mass_bag.length+1}
 
 
 
@@ -90,9 +91,99 @@ document.querySelector('.badge').innerHTML=1
 		}
 
 	}
+// стираине из карзины
+	if (event.target.className=='btn btn-danger') {
+let snoorf=[]
+cot=Number(event.target.dataset.id)
+// console.log(mass_bag)
+// for (i of mass_bag) {
+// 	// statement
+// }
+// console.log(mass_bag.id.indexOf(cot))
 
+		// if (op.indexOf(cot)!=-1) {
+// mass_bag=localStorage.getItem('a')
 
+// 	mass_bag=JSON.parse(mass_bag)
+ 
+	// console.log(typeof(op.indexOf(cot)))
+mass_bag=localStorage.getItem('a')
+// console.log(mass_bag)
+if (mass_bag!=null) {
+	mass_bag=JSON.parse(mass_bag)
+
+	for (let i of mass_bag) {
+		i.id=Number(i.id)
+		op.push(i.id)
+		// op=[...new Set(op)];
+		// tootorials
+		// knoot
+	}
 }
 
 
+delete mass_bag[op.indexOf(cot)]
+
+// console.log(mass_bag)
+
+mass_bag.forEach((item)=>{
+	if (item!=null) {
+		delete mass_bag
+		snoorf.push(item)
+	} 
+
+	
+})
+
+localStorage.clear('a')
+	localStorage.setItem('a',JSON.stringify(snoorf))
+
+
+console.log(mass_bag)
+
+
+	// mass_bag.splice(op.indexOf(cot),1)
+	// console.log(mass_bag)
+// }
+
+// 			console.log('good')
+// 			console.log(mass_bag.id)
+
+// // .slice()
+// 		}else{console.log('bad')}
+
+
+
+
+// console.log(event.target.dataset.id)
+// console.log(mass_bag)
+
+		// let data = localStorage.a
+
+// for (i of mass_bag) {
+// 	console.log(i)
+// 	// cot = i.dataset.id
+// 	// console.log(i.dataset.id)
+
+
+// }
+// if (mass_bag!=null) {
+// 	mass_bag=JSON.parse(mass_bag)
+// console.log(op)
+	// for (let i of mass_bag) {
+	// 	i.id=Number(i.id)
+	// 	// console.log(i.id)
+
+	
+}
+
+// if (event.target.dataset.id.includes(data) === true) {
+
+// 		event.target.dataset.id
+
+// 	// localStorage.removeItem('a')
+// 	}
+}
+// }
+// --------
 
