@@ -11,14 +11,15 @@ if (mass_bag!=null) {
 	mass_bag=JSON.parse(mass_bag)
 
 	for (let i of mass_bag) {
-		i.id=Number(i.id)
-		op.push(i.id)
+		if (i!=null) {
+			i.id=Number(i.id)
+			op.push(i.id)
 		// op=[...new Set(op)];
 		// tootorials
 		// knoot
+		}
 	}
 }
-
 // данные из страницы HTML
 
 let jo=document.querySelectorAll('.order')
@@ -93,97 +94,62 @@ document.onclick=event=> {
 	}
 // стираине из карзины
 	if (event.target.className=='btn btn-danger') {
-let snoorf=[]
-cot=Number(event.target.dataset.id)
+		let snoorf=[]
+		cot=Number(event.target.dataset.id)
+// console.log(cot)
+
+		mass_bag=localStorage.getItem('a')
 // console.log(mass_bag)
-// for (i of mass_bag) {
-// 	// statement
-// }
-// console.log(mass_bag.id.indexOf(cot))
+		if (mass_bag!=null) {
+			
+			mass_bag=JSON.parse(mass_bag)
 
-		// if (op.indexOf(cot)!=-1) {
-// mass_bag=localStorage.getItem('a')
+			mass_bag.forEach((item) => {
 
-// 	mass_bag=JSON.parse(mass_bag)
- 
-	// console.log(typeof(op.indexOf(cot)))
-mass_bag=localStorage.getItem('a')
-// console.log(mass_bag)
-if (mass_bag!=null) {
-	mass_bag=JSON.parse(mass_bag)
+				if(item!=null){
 
-	for (let i of mass_bag) {
-		i.id=Number(i.id)
-		op.push(i.id)
-		// op=[...new Set(op)];
-		// tootorials
-		// knoot
-	}
-}
+				item.id=Number(item.id)
 
+					op.push(item.id)
 
-delete mass_bag[op.indexOf(cot)]
+					// op=[...new Set(op)];
+				}
+			});
 
-// console.log(mass_bag)
+			// for (let i of mass_bag) {
+			// 	i.id=Number(i.id)
+			// 	op.push(i.id)
+			// 	op=[...new Set(op)];
 
-mass_bag.forEach((item)=>{
-	if (item!=null) {
-		delete mass_bag
-		snoorf.push(item)
-	} 
+			// }
+		}
 
-	
-})
-
-localStorage.clear('a')
-	localStorage.setItem('a',JSON.stringify(snoorf))
-
-
-console.log(mass_bag)
-
-
-	// mass_bag.splice(op.indexOf(cot),1)
-	// console.log(mass_bag)
-// }
-
-// 			console.log('good')
-// 			console.log(mass_bag.id)
-
-// // .slice()
-// 		}else{console.log('bad')}
-
-
-
-
-// console.log(event.target.dataset.id)
-// console.log(mass_bag)
-
-		// let data = localStorage.a
-
-// for (i of mass_bag) {
-// 	console.log(i)
-// 	// cot = i.dataset.id
-// 	// console.log(i.dataset.id)
-
-
-// }
-// if (mass_bag!=null) {
-// 	mass_bag=JSON.parse(mass_bag)
 // console.log(op)
-	// for (let i of mass_bag) {
-	// 	i.id=Number(i.id)
-	// 	// console.log(i.id)
 
-	
+
+// стирание выбраной позиции оставляет null
+// console.log(op.indexOf(cot))
+		delete mass_bag[op.indexOf(cot)]
+		console.log(mass_bag)
+// перебор массива и убирание нулувых позиций
+// mass_bag.forEach((item)=>{
+	// if (item!=null) {
+		// delete mass_bag
+		// snoorf.push(item)
+	// } 
+
+// })
+
+		localStorage.clear('a')
+		localStorage.setItem('a',JSON.stringify(mass_bag))
+
+
+// console.log(mass_bag)
+
+	}
+
+
 }
 
-// if (event.target.dataset.id.includes(data) === true) {
-
-// 		event.target.dataset.id
-
-// 	// localStorage.removeItem('a')
-// 	}
-}
-// }
 // --------
 
