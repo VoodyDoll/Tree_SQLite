@@ -15,8 +15,7 @@ if (mass_bag!=null) {
 			i.id=Number(i.id)
 			op.push(i.id)
 		// op=[...new Set(op)];
-		// tootorials
-		// knoot
+		
 		}
 	}
 }
@@ -92,16 +91,15 @@ document.onclick=event=> {
 		}
 
 	}
-// стираине из карзины
+// стирание из карзины
 	if (event.target.className=='btn btn-danger') {
-		let snoorf=[]
+		// let snoorf=[]
 		cot=Number(event.target.dataset.id)
-// console.log(cot)
-
+console.log(cot)
 		mass_bag=localStorage.getItem('a')
-// console.log(mass_bag)
+
 		if (mass_bag!=null) {
-			
+
 			mass_bag=JSON.parse(mass_bag)
 
 			mass_bag.forEach((item) => {
@@ -112,7 +110,7 @@ document.onclick=event=> {
 
 					op.push(item.id)
 
-					// op=[...new Set(op)];
+					op=[...new Set(op)];
 				}
 			});
 
@@ -124,11 +122,10 @@ document.onclick=event=> {
 			// }
 		}
 
-// console.log(op)
-
+console.log(op)
 
 // стирание выбраной позиции оставляет null
-// console.log(op.indexOf(cot))
+
 		delete mass_bag[op.indexOf(cot)]
 		console.log(mass_bag)
 // перебор массива и убирание нулувых позиций
