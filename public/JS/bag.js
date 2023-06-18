@@ -40,6 +40,8 @@ for (let i of jo) {
 	}
 
 }
+
+
 // --------
 // --------Действие по нажатию кнопки
 document.onclick=event=> {
