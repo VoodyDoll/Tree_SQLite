@@ -115,6 +115,10 @@ if (mass_bag!=null) {
 		let mass_konf=[]
 		let mass_pipa=[]
 		cot=Number(event.target.dataset.id)
+		let name_produ=event.target.closest('.card').children[2].firstElementChild.innerHTML
+     
+
+		console.log(name_produ)
 console.log(cot)
 // В localStorage преобразуем в массив его id
 		mass_bag=localStorage.getItem('a')
