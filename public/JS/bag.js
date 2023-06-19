@@ -122,10 +122,15 @@ document.onclick=event=> {
 		let name_produ=event.target.closest('.card').children[2].firstElementChild.nextElementSibling.firstElementChild
 		name_produ.innerHTML='Заказать'
 		name_produ.disabled = false;
-		
+
 		console.log(cot)
 // В localStorage преобразуем в массив его id
 		mass_bag=localStorage.getItem('a')
+
+
+
+
+
 // console.log(mass_bag)
 		if (mass_bag!=null) {
 
@@ -144,10 +149,18 @@ document.onclick=event=> {
 			});
 
 		}
-document.querySelector('.badge').innerHTML=op.length-1
-		console.log(op)
-		console.log(op.indexOf(cot))
+// обесцвечивание кнопки карзина
+if (mass_bag.length==1) {document.querySelector('.bag').style.color=''}
+// console.log(mass_bag)
 
+
+		// изменение счетчика
+document.querySelector('.badge').innerHTML=op.length-1
+		// console.log(op)
+		// console.log(op.indexOf(cot))
+	// 	if (mass_bag.length==0) {
+	// 	document.querySelector('.bag').style.color=''
+	// }
 // стирание выбраной позиции оставляет null
 
 		// 
@@ -179,12 +192,7 @@ document.querySelector('.badge').innerHTML=op.length-1
 		localStorage.clear('a')
 		localStorage.setItem('a',JSON.stringify(mass_bag))
 
-
-
-// console.log(mass_bag)
-
 	}
-
 
 }
 
