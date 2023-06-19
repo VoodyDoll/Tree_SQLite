@@ -183,7 +183,6 @@ document.querySelector('.badge').innerHTML=op.length-1
 				mass_pipa.push(ai)
 				mass_pipa=[...new Set(mass_pipa)];
 				op=mass_pipa
-
 			}
 		}
 
