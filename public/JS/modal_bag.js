@@ -1,22 +1,19 @@
-// // var myModal = document.querySelector('.modal_window')
-// // // myModalEl.addEventListener('show.bs.modal', function (event) {
-  
-// // // })
-
-// var myModalEl = document.querySelector('.modal_window')
 
 
-// // document.querySelector('.mod_window').onclick=()=>{
-  
-// //   // myModalEl.addEventListener('hidden.bs.modal', function (event) {
-// //   console.log('pipa')
-// // }
-// // })
-// // }
 
-// document.querySelector('.mod_window').onclick=()=>{
-//   // myModalEl.hide()
-//   // console.log('vdood')
-// }
+document.querySelector('.bag').onclick=function(){
+  mass_bag=localStorage.getItem('a')
+  mass_bag=JSON.parse(mass_bag)
 
-// // console.log(document.querySelector('.mod_window'))
+for (let tot of mass_bag) {
+
+document.querySelector('#img_product').src=tot.img
+
+ 
+}
+
+
+
+
+
+}

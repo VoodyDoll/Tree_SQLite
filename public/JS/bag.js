@@ -78,8 +78,6 @@ document.onclick=event=> {
 
 		}else{document.querySelector('.badge').innerHTML=mass_bag.length+1}
 
-
-
 // работа с кнопкой
 
 		event.target.innerHTML='Товар в карзине'
@@ -127,11 +125,6 @@ document.onclick=event=> {
 // В localStorage преобразуем в массив его id
 		mass_bag=localStorage.getItem('a')
 
-
-
-
-
-// console.log(mass_bag)
 		if (mass_bag!=null) {
 
 			mass_bag=JSON.parse(mass_bag)
