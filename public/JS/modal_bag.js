@@ -2,10 +2,15 @@ document.querySelector('.bag').onclick=function(){
 
  let mass_bag_win=localStorage.getItem('a')
     mass_bag_win=JSON.parse(mass_bag_win)
+    // удаление чтобы небыло накопления
+if (document.querySelector('.kook')) {
+  document.querySelector('.kook').remove()
+}else{
 
 for (let tot of mass_bag_win) {
 
 let div = document.createElement('div');
+div.className='kook'
 div.innerHTML=`<div class="card" style="width: 18rem;">
   <img src=${tot.img} class="rounded mx-auto d-block" alt="...">
   <div class="card-body">
@@ -55,7 +60,7 @@ div.innerHTML=`<div class="card" style="width: 18rem;">
 }
 
  // delete mass_bag_win
-
+}
 
 
 }
