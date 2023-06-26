@@ -3,9 +3,12 @@ document.querySelector('.bag').onclick=function(){
  let mass_bag_win=localStorage.getItem('a')
     mass_bag_win=JSON.parse(mass_bag_win)
     // удаление чтобы небыло накопления
-if (document.querySelector('.kook')) {
-  document.querySelector('.kook').remove()
-}else{
+    let mass_bag_sorage=document.querySelectorAll('.kook')
+    console.log(mass_bag_sorage)
+
+  for (i of mass_bag_sorage) {
+    i.remove()
+  }
 
 for (let tot of mass_bag_win) {
 
@@ -52,15 +55,11 @@ div.innerHTML=`<div class="card" style="width: 18rem;">
     <a href="#" class="card-link">Another link</a>
   </div>
 </div>`
-// console.log(img)
+
   document.querySelector('.img_product').append(div); 
 
-// document.querySelector('#img_product').src=tot.img
+
 
 }
-
- // delete mass_bag_win
-}
-
 
 }
