@@ -19,7 +19,7 @@ document.querySelector('.bag').onclick=function(){
     <div class="row">
     <div class="col-md-4"><img src=${tot.img} class="rounded mx-auto d-block" alt="..."></div>
     <div class="col-md-6" style="background-color: #F8F9FA;"><h5 class="">${tot.name}</h5></div>
-    <div class="col-md-2"><input type="number" min="1" max="15" class="input_fild" style="width:50px;"><h3><h3>${tot.cost}</h3>руб</h3>
+    <div class="col-md-2"><input type="number" min="1" max="15" class="input_fild" style="width:50px;"><h3><h3 data-gnoo=${tot.cost}>${tot.cost}</h3>руб</h3>
     <div class="row">
     <div class="col-md"></div>
     <div class="col-md"><button data-id="{{this.post_id}}" class="btn btn-danger">Удалить из корзины</button></div>
@@ -39,7 +39,7 @@ document.querySelector('.bag').onclick=function(){
 
 
     }
-   
+
 
     price_chenge()
 
@@ -47,20 +47,28 @@ document.querySelector('.bag').onclick=function(){
   }
 
 // функция изменения поля цены
-  function price_chenge(tot){
+  function price_chenge(){
+
 
     document.onclick=(event)=>{
-if (event.target.className=='input_fild') {
+
+      if (event.target.className=='input_fild') {
+
+        // let next_pop=event.target.nextSibling.nextSibling.innerHTML
+
+        let next_index=event.target.nextSibling.nextSibling.dataset.gnoo
+        console.log(next_index)
+
+        let price_chenge=event.target.value*next_index
+
+        event.target.nextSibling.nextSibling.innerHTML=price_chenge
+
+        console.log(price_chenge)
 
 
-  console.log(event.target.value*event.target.nextSibling.nextSibling.innerHTML)
+      }
 
 
-}
-    
-    // document.querySelector('.input_fild').oninput=()=>{
-
-  // console.log(document.querySelector('.input_fild').value*tot)
     }
 
 
