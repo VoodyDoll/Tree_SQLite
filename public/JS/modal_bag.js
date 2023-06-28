@@ -15,7 +15,7 @@ document.querySelector('.bag').onclick=function(){
     let div = document.createElement('div');
     div.className='kook'
     div.innerHTML=`<div class="container">
-    <!-- <div class="row"> -->
+    
     <div class="row">
     <div class="col-md-4"><img src=${tot.img} class="rounded mx-auto d-block" alt="..."></div>
     <div class="col-md-6" style="background-color: #F8F9FA;"><h5 class="">${tot.name}</h5></div>
@@ -33,19 +33,34 @@ document.querySelector('.bag').onclick=function(){
 
     document.querySelector('.img_product').append(div); 
 
-
     let input_fild=document.querySelectorAll('.input_fild')
     for ( i of input_fild) {
       i.value=num_price
+
+
     }
-    price_chenge(tot.cost)
+   
+
+    price_chenge()
+
+
   }
 
 // функция изменения поля цены
   function price_chenge(tot){
-    document.querySelector('.input_fild').oninput=()=>{
 
-  console.log(document.querySelector('.input_fild').value*tot)
+    document.onclick=(event)=>{
+if (event.target.className=='input_fild') {
+
+
+  console.log(event.target.value*event.target.nextSibling.nextSibling.innerHTML)
+
+
+}
+    
+    // document.querySelector('.input_fild').oninput=()=>{
+
+  // console.log(document.querySelector('.input_fild').value*tot)
     }
 
 
