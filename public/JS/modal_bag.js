@@ -57,13 +57,13 @@ document.querySelector('.bag').onclick=function(){
         // let next_pop=event.target.nextSibling.nextSibling.innerHTML
 
         let next_index=event.target.nextSibling.nextSibling.dataset.gnoo
-        console.log(next_index)
+        // console.log(next_index)
 
         let price_chenge=event.target.value*next_index
 
         event.target.nextSibling.nextSibling.innerHTML=price_chenge
 
-        console.log(price_chenge)
+        // console.log(price_chenge)
 
 
       }
