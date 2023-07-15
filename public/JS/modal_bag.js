@@ -40,9 +40,8 @@ document.querySelector('.bag').onclick=function(){
 
     }
 
-
     price_chenge()
-
+    // fade_modal()
 
   }
 
@@ -52,25 +51,27 @@ document.querySelector('.bag').onclick=function(){
 
     document.onclick=(event)=>{
 
-      if (event.target.className=='input_fild') {
+      if (event.target.className=='input_fild') {       
 
-        // let next_pop=event.target.nextSibling.nextSibling.innerHTML
-
-        let next_index=event.target.nextSibling.nextSibling.dataset.gnoo
-        // console.log(next_index)
+        let next_index=event.target.nextSibling.nextSibling.dataset.gnoo       
 
         let price_chenge=event.target.value*next_index
 
         event.target.nextSibling.nextSibling.innerHTML=price_chenge
 
-        // console.log(price_chenge)
-
-
+      
+        create_modalw()
       }
 
 
     }
 
+
+  }
+
+  function create_modalw(){
+    
+    localStorage.setItem('b',JSON.stringify(mass_bag))
 
   }
   
