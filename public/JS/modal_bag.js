@@ -14,21 +14,21 @@ document.querySelector('.bag').onclick=function(){
 
     let div = document.createElement('div');
     div.className='kook'
+    div.setAttribute('data-id', tot.id)
     div.innerHTML=`<div class="container">
     
     <div class="row">
     <div class="col-md-4"><img src=${tot.img} class="rounded mx-auto d-block" alt="..."></div>
     <div class="col-md-6" style="background-color: #F8F9FA;"><h5 class="">${tot.name}</h5></div>
-    <div class="col-md-2"><input type="number" min="1" max="15" class="input_fild" style="width:50px;"><h3><h3 data-gnoo=${tot.cost}>${tot.cost}</h3>руб</h3>
+    <div class="col-md-2"><input type="number" min="1" max="15" class="input_fild" style="width:50px;"><h3><h3 data-id=${tot.id} data-gnoo=${tot.cost}>${tot.cost}</h3>руб</h3>
     <div class="row">
     <div class="col-md"></div>
-    <div class="col-md"><button data-id="{{this.post_id}}" class="btn btn-danger">Удалить из корзины</button></div>
+    <div class="col-md"><button data-id=${tot.id} class="btn btn-danger">Удалить из корзины</button></div>
     <div class="col-md"></div>
     </div>
     </div>
-    <div class="col-md-12" style="height: 25px;" ></div>
+    <div class="col-md-12" style="height: 25px;"></div>
     </div>
-
     </div>`
 
     document.querySelector('.img_product').append(div); 
@@ -40,38 +40,38 @@ document.querySelector('.bag').onclick=function(){
 
     }
 
-    price_chenge()
-    // fade_modal()
+    price_chenge()   
 
   }
 
 // функция изменения поля цены
   function price_chenge(){
 
-
     document.onclick=(event)=>{
 
       if (event.target.className=='input_fild') {       
 
-        let next_index=event.target.nextSibling.nextSibling.dataset.gnoo       
+        let next_index=event.target.nextSibling.nextSibling.dataset.gnoo  
+
+let forst=event.target.nextSibling.nextSibling.dataset.id
 
         let price_chenge=event.target.value*next_index
 
         event.target.nextSibling.nextSibling.innerHTML=price_chenge
-
-      
-        create_modalw()
+      // console.log(forst)
+        create_modalw(forst)
       }
-
 
     }
 
-
   }
-
-  function create_modalw(){
+// функция записи в localstorage 'b' данных из карзины
+  function create_modalw(forst){
     
-    localStorage.setItem('b',JSON.stringify(mass_bag))
+
+// let id=event.target.dataset.id
+
+    localStorage.setItem('b',JSON.stringify(forst))
 
   }
   
