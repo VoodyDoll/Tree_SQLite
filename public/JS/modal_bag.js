@@ -1,4 +1,10 @@
+
+
 document.querySelector('.bag').onclick=function(){
+
+// document.addEventListener('beforeunload', console.log('The modal is about to be hidden!'));
+
+
   let num_price=1
   let mass_bag_win=localStorage.getItem('a')
   mass_bag_win=JSON.parse(mass_bag_win)
@@ -58,23 +64,21 @@ let forst=event.target.nextSibling.nextSibling.dataset.id
         let price_chenge=event.target.value*next_index
 
         event.target.nextSibling.nextSibling.innerHTML=price_chenge
-      // console.log(forst)
-        create_modalw(forst)
+      
       }
 
     }
 
   }
-// функция записи в localstorage 'b' данных из карзины
-  function create_modalw(forst){
-    
 
-// let id=event.target.dataset.id
+exit_modal()
 
-    localStorage.setItem('b',JSON.stringify(forst))
+// функция выхода из модальног окна
+  function exit_modal(){
+    document.querySelector('.modal').addEventListener('hide.bs.modal', function () {
+       console.log('The modal is about to be hidden!');
+    });
 
-  }
-  
-
+}
 }
 
