@@ -78,3 +78,14 @@ npm rebuild
 </div>
 
     </---->
+
+    <----GIT--->
+    git branch -v-просмотр последнего коммина на ветке
+    git branch --merged-чтобы посмотреть те ветки, которые вы уже слили с текущей, можете выполнить команду
+    git branch --no-merged-Чтобы увидеть все ветки, содержащие наработки, которые вы пока ещё не слили в текущую ветку, выполните команду
+    git branch --move bad-branch-name corrected-branch-name-изменение названия ветки
+    git push --set-upstream origin corrected-branch-name-отправление измененного названия ветки в удаленный репозиторий
+    git remote show-для получения удалённых веток и дополнительной информации
+    git commit --amend-сохранение в последний коммит
+    git reset HEAD CONTRIBUTING.md-отмена индексирования
+    git checkout -- CONTRIBUTING.md-отменить изменения в файле CONTRIBUTING.md

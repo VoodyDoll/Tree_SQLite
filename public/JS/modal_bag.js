@@ -20,7 +20,7 @@ document.querySelector('.bag').onclick=function(){
     <div class="row">
     <div class="col-md-4"><img src=${tot.img} class="rounded mx-auto d-block" alt="..."></div>
     <div class="col-md-6" style="background-color: #F8F9FA;"><h5 class="">${tot.name}</h5></div>
-    <div class="col-md-2"><input type="number" min="1" max="15" class="input_fild" style="width:50px;"><h3><h3 data-id=${tot.id} data-gnoo=${tot.cost}>${tot.cost}</h3>руб</h3>
+    <div class="col-md-2"><input data-id=${tot.id} type="number" min="1" max="15" class="input_fild" style="width:50px;"><h3><h3 data-id=${tot.id} data-gnoo=${tot.cost}>${tot.cost}</h3>руб</h3>
     <div class="row">
     <div class="col-md"></div>
     <div class="col-md"><button data-id=${tot.id} class="btn btn-danger">Удалить из корзины</button></div>
@@ -54,24 +54,35 @@ document.querySelector('.bag').onclick=function(){
         let next_index=event.target.nextSibling.nextSibling.dataset.gnoo  
 
 let forst=event.target.nextSibling.nextSibling.dataset.id
-
+let soom=event.target.nextSibling.nextSibling.innerHTML
+// console.log(soom)
         let price_chenge=event.target.value*next_index
 
         event.target.nextSibling.nextSibling.innerHTML=price_chenge
-      // console.log(forst)
-        create_modalw(forst)
+      console.log(forst)
+      console.log(price_chenge)
+        create_modalw(forst,price_chenge)
       }
 
     }
 
   }
-// функция записи в localstorage 'b' данных из карзины
-  function create_modalw(forst){
-    
+// функция записи в localstorage 'a' данных из карзины
+  function create_modalw(forst,price_chenge){
 
-// let id=event.target.dataset.id
+for (tot of mass_bag) {
 
-    localStorage.setItem('b',JSON.stringify(forst))
+  if (tot.id==forst) {
+      tot.cost=price_chenge
+  }
+   
+   
+}
+
+    console.log(mass_bag)
+
+// mass_bag.push({id:forst,cost:price_chenge})
+    localStorage.setItem('a',JSON.stringify(mass_bag))
 
   }
   
