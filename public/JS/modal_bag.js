@@ -1,7 +1,11 @@
 document.querySelector('.bag').onclick=function(){
   let num_price=1
   let mass_bag_win=localStorage.getItem('a')
+
   mass_bag_win=JSON.parse(mass_bag_win)
+
+// all_cost()
+
   // удаление чтобы небыло накопления
   let mass_bag_sorage=document.querySelectorAll('.kook')
 
@@ -10,20 +14,20 @@ document.querySelector('.bag').onclick=function(){
     i.remove()
   }
 
-  for (let tot of mass_bag_win) {
+  for ( i of mass_bag_win) {
 
     let div = document.createElement('div');
     div.className='kook'
-    div.setAttribute('data-id', tot.id)
+    div.setAttribute('data-id', i.id)
     div.innerHTML=`<div class="container">
     
     <div class="row">
-    <div class="col-md-4"><img src=${tot.img} class="rounded mx-auto d-block" alt="..."></div>
-    <div class="col-md-6" style="background-color: #F8F9FA;"><h5 class="">${tot.name}</h5></div>
-    <div class="col-md-2"><input data-id=${tot.id} type="number" min="1" max="15" class="input_fild" style="width:50px;"><h3><h3 data-id=${tot.id} data-gnoo=${tot.cost}>${tot.cost}</h3>руб</h3>
+    <div class="col-md-4"><img src=${i.img} class="rounded mx-auto d-block" alt="..."></div>
+    <div class="col-md-6" style="background-color: #F8F9FA;"><h5 class="">${i.name}</h5></div>
+    <div class="col-md-2"><input data-id=${i.id} type="number" min="1" max="15" class="input_fild" style="width:50px;"><h3><h3 class='poor_cost' data-id=${i.id} data-gnoo=${i.cost}>${i.cost}</h3>руб</h3>
     <div class="row">
     <div class="col-md"></div>
-    <div class="col-md"><button data-id=${tot.id} class="btn btn-danger">Удалить из корзины</button></div>
+    <div class="col-md"><button data-id=${i.id} class="btn btn-danger">Удалить из корзины</button></div>
     <div class="col-md"></div>
     </div>
     </div>
@@ -40,11 +44,12 @@ document.querySelector('.bag').onclick=function(){
 
     }
 
-    price_chenge()   
+    price_chenge()  
+
 
   }
 
-// функция изменения поля цены
+// функция изменения поля цены(точка входа в основную прогу)
   function price_chenge(){
 
     document.onclick=(event)=>{
@@ -53,15 +58,15 @@ document.querySelector('.bag').onclick=function(){
 
         let next_index=event.target.nextSibling.nextSibling.dataset.gnoo  
 
-let forst=event.target.nextSibling.nextSibling.dataset.id
-let soom=event.target.nextSibling.nextSibling.innerHTML
-// console.log(soom)
+        let forst=event.target.nextSibling.nextSibling.dataset.id
+        let soom=event.target.nextSibling.nextSibling.innerHTML
+
         let price_chenge=event.target.value*next_index
 
         event.target.nextSibling.nextSibling.innerHTML=price_chenge
-      console.log(forst)
-      console.log(price_chenge)
+      
         create_modalw(forst,price_chenge)
+
       }
 
     }
@@ -70,22 +75,33 @@ let soom=event.target.nextSibling.nextSibling.innerHTML
 // функция записи в localstorage 'a' данных из карзины
   function create_modalw(forst,price_chenge){
 
-for (tot of mass_bag) {
+    for (i of mass_bag) {
 
-  if (tot.id==forst) {
-      tot.cost=price_chenge
-  }
-   
-   
-}
+      if (i.id==forst) {
+        i.cost=price_chenge
+      }      
 
-    console.log(mass_bag)
+    }  
 
-// mass_bag.push({id:forst,cost:price_chenge})
     localStorage.setItem('a',JSON.stringify(mass_bag))
-
+all_cost()
   }
+
   
+  // функция общей цены
+  function all_cost(){
+    // let costs=document.querySelectorAll('.poor_cost')
+
+for (i of mass_bag_win) {
+
+ i=+i.cost
+document.querySelector('.costs').innerHTML=i
+  // console.log(Number(i.innerHTML))
+
+}
+    
+  }
+
 
 }
 
