@@ -15,11 +15,12 @@ document.querySelector('.bag').onclick=function(){
   // console.log(mass_bag_win)
 // document.querySelector('.input_fild').value=i.cost_number
   for ( i of mass_bag_win) {
-// console.log(i.cost_number)
+    
     let div = document.createElement('div');
     div.className='kook'
     div.setAttribute('data-id', i.id)    
-    // let si=i.cost_number
+  
+    if (i.cost_number!=undefined) {
     div.innerHTML=`<div class="container">
     
     <div class="row">
@@ -36,7 +37,25 @@ document.querySelector('.bag').onclick=function(){
     <div class="col-md-12" style="height: 25px;"></div>
     </div>
     </div>`
+}else {  
 
+    div.innerHTML=`<div class="container">
+    
+    <div class="row">
+    <div class="col-md-4"><img src=${i.img} class="rounded mx-auto d-block" alt="..."></div>
+    <div class="col-md-6" style="background-color: #F8F9FA;"><h5 class="">${i.name}</h5></div>
+
+    <div class="col-md-2"><input value=1  data-id=${i.id} type="number" min="1" max="15" class="input_fild" style="width:50px;"><h3><h3 class='poor_cost' data-id=${i.id} data-gnoo=${i.cost}>${i.cost}</h3>руб</h3>
+    <div class="row">
+    <div class="col-md"></div>
+    <div class="col-md"><button data-id=${i.id} class="btn btn-danger">Удалить из корзины</button></div>
+    <div class="col-md"></div>
+    </div>
+    </div>
+    <div class="col-md-12" style="height: 25px;"></div>
+    </div>
+    </div>`
+}
 
     document.querySelector('.img_product').append(div); 
 
