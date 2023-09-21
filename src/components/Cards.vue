@@ -64,7 +64,7 @@ export default {
 
         event.target.className='btn btn-primary'
         // console.log(age)
-
+        // удаление карточки из localstor
         for (let i = this.bag_stor.length; i--; ) {
           if (this.bag_stor[i].age === age) {
             this.bag_stor.splice(i, 1);
@@ -79,9 +79,15 @@ export default {
 
         this.bag_stor.push({name,age,allposition,id})
       }
-
           
     },
+    mounted(){
+
+      let stor=localStorage.getItem('bag_stor')
+      console.log(stor)
+      this.bag_stor=JSON.parse(stor)
+
+    }
 }
 </script>
 
