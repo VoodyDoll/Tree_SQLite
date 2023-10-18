@@ -1,8 +1,8 @@
 <template>
-
+{{toott}}
 {{totalPages}}
   <Filter @revers='rport' v-model='selectedSort'></Filter>
-  <Cards v-if='!isvisible' :cardrezz='rezz' :nameButton='bag' @button_navbar='buttonna'></Cards>
+  <Cards v-if='!isvisible' :cardrezz='rezz' :toot='toot' :nameButton='bag' @button_navbar='buttonna'></Cards>
   <p v-else>Идет загрузка....</p>
   <!-- страницы -->
   <div class="page_wrapper">
@@ -47,11 +47,12 @@ export default {
         modalWindow:false,
         bagWindow:false,
         selectedSort:'',
-        toot:'',
+        toott:'',
         isvisible:false,
         page:1,
         limit:12,
-        totalPages:0
+        totalPages:0,
+        toot:''
         
       }
     },
@@ -60,12 +61,14 @@ export default {
 
       // сортировка по стоимости
       rport(toot){
+        console.log(toot)
+          this.toot=toot
         // console.log(toot)
         if (toot=='costlow') {
           return this.rezz.sort((post1,post2)=>{
           return post1['age']-post2['age']})
         }
-        else if (toot=='costbig') {
+        else if (toot=='costbig') {          
           return this.rezz.sort((post1,post2)=>{
           return post2['age']-post1['age']})
         }        
@@ -82,7 +85,11 @@ export default {
     })
      .then(res=>res.json())                 
      .then(data=>this.rezz=data)  
-      },
+ // console.log(this.rezz)
+              
+        },
+// console.log(this.toot)
+      
       // кнопка в navbar
       buttonna(cased){
 
@@ -113,6 +120,11 @@ export default {
       pil=pil.toUpperCase()      
       return [...this.rezz]=this.rezz.filter(post=>post.name.toUpperCase().includes(pil))
      
+    },
+    // фильтр цены не сбрасывается при смене страниц
+    rezz(){
+      this.rport(this.toot)
+      
     }
    },
 

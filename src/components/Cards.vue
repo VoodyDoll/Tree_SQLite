@@ -1,5 +1,6 @@
 <template>
 	<div class="container">
+    <div class="memory" :data-set='bag_stor'>{{bag_stor}}</div>
 	    <div  class="d-flex flex-wrap">
       
       <div class="miss" v-for="jo in cardrezz" :key='jo'>
@@ -45,7 +46,8 @@ export default {
       case:false
     }
   },
-   methods:{ 
+   methods:{
+
          // изменяет класс и запись в localstor при клике по ней 
       chenge_class(event,name,age,allposition,id){
         // включеине кнопки в navbar
@@ -55,8 +57,8 @@ export default {
 
         event.target.className=='btn btn-danger'?this.change1(name,age,allposition,id):this.change2(name,age,allposition,id)
 
-        localStorage.setItem('bag_stor',JSON.stringify(this.bag_stor))
-        console.log(this.bag_stor)
+        // localStorage.setItem('bag_stor',JSON.stringify(this.bag_stor))
+        // console.log(this.bag_stor)
         // this.bag_stor.destroy
       },
 
@@ -65,29 +67,40 @@ export default {
         event.target.className='btn btn-primary'
         // console.log(age)
         // удаление карточки из localstor
-        for (let i = this.bag_stor.length; i--; ) {
-          if (this.bag_stor[i].age === age) {
-            this.bag_stor.splice(i, 1);
-            }
-        }
+        // for (let i = this.bag_stor.length; i--; ) {
+        //   if (this.bag_stor[i].age === age) {
+        //     this.bag_stor.splice(i, 1);
+        //     }
+        // }
 
         },
 
       change2(name,age,allposition,id){
 
         event.target.className='btn btn-danger'
-
-        this.bag_stor.push({name,age,allposition,id})
+this.bag_stor.push(id)
+console.log(this.bag_stor)
+        // this.bag_stor.push({name,age,allposition,id})
       }
           
     },
+
+    watch:{
+      cardrezz(tipp){
+        // console.log(tipp)
+
+      }
+
+    },
+
     mounted(){
 
-      let stor=localStorage.getItem('bag_stor')
-      console.log(stor)
-      this.bag_stor=JSON.parse(stor)
+      // let stor=localStorage.getItem('bag_stor')
+      // console.log(stor)
+      // this.bag_stor=JSON.parse(stor)
 
-    }
+    },
+    
 }
 </script>
 
