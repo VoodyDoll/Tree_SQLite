@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-    <div class="memory" :data-set='bag_stor'>{{bag_stor}}</div>
+    <div id="memory" :data-set='bag_stor'>{{bag_stor}}</div>
 	    <div  class="d-flex flex-wrap">
       
       <div class="miss" v-for="jo in cardrezz" :key='jo'>
@@ -14,7 +14,7 @@
           <p class="card-text">{{jo.id}}</p>
           
           
-            <button class='btn btn-primary' @click="chenge_class($event,jo.name,jo.age,jo.allposition,jo.id)">{{nameButton}}</button>
+            <button  :class="bag_stor.includes(jo.id) ? 'btn btn-danger' : 'btn btn-primary'" @click="chenge_class($event,jo.name,jo.age,jo.allposition,jo.id)">{{nameButton}}</button>
             
           </div>
         </div>
@@ -43,7 +43,8 @@ export default {
     return {
       serch:'',
       bag_stor:[],
-      case:false
+      case:false,
+        jo:''
     }
   },
    methods:{
@@ -79,7 +80,7 @@ export default {
 
         event.target.className='btn btn-danger'
 this.bag_stor.push(id)
-console.log(this.bag_stor)
+// console.log(this.bag_stor)
         // this.bag_stor.push({name,age,allposition,id})
       }
           
@@ -87,8 +88,12 @@ console.log(this.bag_stor)
 
     watch:{
       cardrezz(tipp){
+        // if()
         // console.log(tipp)
 
+      },
+      jo(){
+        console.log('jo')
       }
 
     },
